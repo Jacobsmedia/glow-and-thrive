@@ -6,26 +6,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Glow & Thrive</title>
   <style>
+    :root {
+      --bg-color: #fffaf7;
+      --text-color: #333;
+      --header-bg: #ffb6a1;
+      --nav-bg: #f78c6b;
+      --feature-bg: #fff;
+      --footer-bg: #fcece6;
+    }
+
     body {
       margin: 0;
       font-family: "Segoe UI", sans-serif;
-      background: #fffaf7;
-      color: #333;
+      background: var(--bg-color);
+      color: var(--text-color);
       line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #eee;
+      --header-bg: #333;
+      --nav-bg: #444;
+      --feature-bg: #2d2d2d;
+      --footer-bg: #222;
     }
 
     header {
-      background-color: #ffb6a1;
+      background-color: var(--header-bg);
       padding: 2rem 1rem;
       text-align: center;
       color: #fff;
     }
 
     nav {
-      background: #f78c6b;
+      background: var(--nav-bg);
       color: white;
       padding: 0.8rem;
       text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
     }
 
     nav a {
@@ -42,6 +65,8 @@
       color: white;
       padding: 6rem 2rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero h1 {
@@ -69,9 +94,22 @@
       border: 1px solid #f3e9e2;
       padding: 1.5rem;
       border-radius: 10px;
-      background: #fff;
+      background: var(--feature-bg);
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.5s, opacity 0.5s;
+    }
+
+    .feature.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .feature img {
@@ -83,12 +121,21 @@
     }
 
     footer {
-      background-color: #fcece6;
+      background-color: var(--footer-bg);
       text-align: center;
       padding: 1.5rem;
       font-size: 0.9rem;
       color: #888;
       margin-top: 4rem;
+    }
+    #theme-toggle {
+      background: none;
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -103,6 +150,7 @@
     <a href="#">Wellness</a>
     <a href="#">Recipes</a>
     <a href="#">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
   </nav>
 
   <div class="hero">
@@ -134,5 +182,24 @@
   <footer>
     &copy; 2025 Glow & Thrive. All rights reserved.
   </footer>
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.feature').forEach(feature => {
+      observer.observe(feature);
+    });
+  </script>
 </body>
 </html>
