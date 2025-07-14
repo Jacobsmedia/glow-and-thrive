@@ -99,6 +99,7 @@
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
             transition: all 0.3s ease;
+            animation: pulse 1.8s infinite;
         }
 
         .action-button:hover {
@@ -107,9 +108,17 @@
             box-shadow: 0 6px 8px rgba(0, 86, 179, 0.4);
         }
 
-        .action-button::before {
-            content: "👇 ";
-            margin-right: 5px;
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
 
