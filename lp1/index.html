@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Hack Quiz - Transformational Weight Loss</title>
+    <link href="https://ext.same-assets.com/1635112822/351187734.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+    <style>
+        @font-face {
+            font-family: 'Ubuntu';
+            src: url('https://ext.same-assets.com/1635112822/351187734.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Ubuntu', Arial, sans-serif;
+            background-color: #fbfbfb;
+            color: #343a3c;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .form__wrapper {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #cbd2d0;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #4a9eff;
+            width: 16.67%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .title__main h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #343a3c;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .title__main h2 {
+            font-size: 1.4em;
+            color: #c25359;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .title p {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #343a3c;
+            margin-bottom: 30px;
+        }
+
+        .form__step {
+            display: none;
+        }
+
+        .form__step.current {
+            display: block;
+        }
+
+        .elem__radio {
+            margin: 15px 0;
+            text-align: left;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .elem__radio input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+
+        .elem__radio label {
+            font-size: 1.2em;
+            color: #343a3c;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+
+        .elem__radio label:hover {
+            background-color: #f5f5f5;
+        }
+
+        .elem__radio input[type="radio"]:checked + label {
+            background-color: #e0f2ff;
+            border: 2px solid #4a9eff;
+        }
+
+        .next-btn {
+            background-color: #4a9eff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+            display: none;
+        }
+
+        .next-btn:hover {
+            background-color: #3a8eef;
+        }
+
+        .next-btn.show {
+            display: inline-block;
+        }
+
+        .modal__wrapper {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal__wrapper.show {
+            display: flex;
+        }
+
+        .box {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #999;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .result p {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #4a9eff;
+            margin-bottom: 20px;
+        }
+
+        .desc p {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #343a3c;
+            margin-bottom: 15px;
+        }
+
+        .desc span {
+            font-size: 1.2em;
+            color: #c25359;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        .bottom a {
+            display: inline-block;
+            background: linear-gradient(135deg, #c25359, #ec9fa0);
+            color: white;
+            text-decoration: none;
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bottom a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(194, 83, 89, 0.3);
+        }
+
+        .bottom .main {
+            display: block;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .bottom .sub {
+            display: block;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .bottom span:last-child {
+            font-size: 0.9em;
+            color: #9b9b9b;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .form__wrapper {
+                padding: 20px;
+            }
+
+            .title__main h1 {
+                font-size: 1.8em;
+            }
+
+            .title__main h2 {
+                font-size: 1.1em;
+            }
+
+            .title p {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form__wrapper">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <form id="quizForm">
+            <div class="title__main">
+                <h1>Most People Have No Idea About This Transformational Coffee Hack... It Has Been Life Changing</h1>
+                <h2>Take The Short Quiz Below To See If It Can Work For You Too</h2>
+            </div>
+
+            <div class="form__step current" data-step="1">
+                <div class="title">
+                    <p>Are you a man or woman over the age of 30?</p>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio1" name="step1" value="Man">
+                    <label for="radio1">Man</label>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio2" name="step1" value="Woman">
+                    <label for="radio2">Woman</label>
+                </div>
+            </div>
+
+            <div class="form__step" data-step="2">
+                <div class="title">
+                    <p>Have you been on more than 3 diets in the last 12 months?</p>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio3" name="step2" value="Yes">
+                    <label for="radio3">Yes</label>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio4" name="step2" value="No">
+                    <label for="radio4">No</label>
+                </div>
+            </div>
+
+            <div class="form__step" data-step="3">
+                <div class="title">
+                    <p>What is your weight loss goal?</p>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio5" name="step3" value="1-20 pounds">
+                    <label for="radio5">Lose 1 - 20 pounds for good</label>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio6" name="step3" value="21-50 pounds">
+                    <label for="radio6">Lose 21 - 50 pounds for good</label>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio7" name="step3" value="50+ pounds">
+                    <label for="radio7">Lose over 50 pounds for good</label>
+                </div>
+            </div>
+
+            <div class="form__step" data-step="4">
+                <div class="title">
+                    <p>Have you been diagnosed with "metabolic syndrome" by your doctor?</p>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio8" name="step4" value="Yes">
+                    <label for="radio8">Yes</label>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio9" name="step4" value="No">
+                    <label for="radio9">No</label>
+                </div>
+            </div>
+
+            <div class="form__step" data-step="5">
+                <div class="title">
+                    <p>Are you interested in seeing how an easy coffee hack can help you burn up to 2.3 lbs of stubborn belly fat every 48 hours?</p>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio10" name="step5" value="Yes">
+                    <label for="radio10">Yes</label>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio11" name="step5" value="No">
+                    <label for="radio11">No</label>
+                </div>
+            </div>
+
+            <div class="form__step" data-step="6">
+                <div class="title">
+                    <p>This free video tutorial reveals a new, easy method for losing weight quickly and keeping it off. Do you promise to watch the entire video?</p>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio12" name="step6" value="Yes">
+                    <label for="radio12">Yes</label>
+                </div>
+                <div class="elem__radio">
+                    <input type="radio" id="radio13" name="step6" value="No">
+                    <label for="radio13">No</label>
+                </div>
+            </div>
+
+            <button type="button" class="next-btn" id="nextBtn">Next Question</button>
+        </form>
+    </div>
+
+    <div class="modal__wrapper" id="modal">
+        <div class="box">
+            <a href="#" class="close" id="closeModal">&times;</a>
+            <div class="result">
+                <p>RESULTS ANALYSIS COMPLETE</p>
+            </div>
+            <div class="desc">
+                <p>Thank You For Completing Our Quiz!</p>
+                <span>Your Results Qualify You For The "10-Second Exotic Coffee Hack"</span>
+            </div>
+            <div class="bottom">
+                <a href="#" target="_blank">
+                    <span class="main">Click Here For Full Video Instructions</span>
+                    <span class="sub">AND RECEIVE YOUR COMPLETE BLUEPRINT</span>
+                </a>
+                <span>(Your results are confidential - please do not share this link)</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function showStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.form__step').forEach(el => {
+                el.classList.remove('current');
+            });
+
+            // Show current step
+            document.querySelector(`[data-step="${step}"]`).classList.add('current');
+
+            // Update progress
+            updateProgress();
+        }
+
+        function checkCurrentStepSelection() {
+            const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
+            const selectedInput = currentStepElement.querySelector('input[type="radio"]:checked');
+            const nextBtn = document.getElementById('nextBtn');
+
+            if (selectedInput) {
+                nextBtn.classList.add('show');
+            } else {
+                nextBtn.classList.remove('show');
+            }
+        }
+
+        // Add event listeners to all radio buttons
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', checkCurrentStepSelection);
+        });
+
+        // Next button functionality
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+                checkCurrentStepSelection();
+            } else {
+                // Show modal
+                document.getElementById('modal').classList.add('show');
+            }
+        });
+
+        // Close modal
+        document.getElementById('closeModal').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('modal').classList.remove('show');
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('show');
+            }
+        });
+
+        // Initialize
+        updateProgress();
+        checkCurrentStepSelection();
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
