@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Purple Tonic Trick Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(to bottom, #f9f9ff, #e4dfff);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #333;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 40px auto;
+      padding: 30px 20px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: #7b2cbf;
+      font-weight: 700;
+    }
+
+    .subheadline {
+      font-size: 16px;
+      color: #555;
+      margin: 10px 0 20px;
+    }
+
+    .image-box img {
+      width: 100%;
+      max-width: 240px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 14px rgba(123, 44, 191, 0.2);
+    }
+
+    .progress {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0 20px;
+    }
+
+    .step {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #e0cfff;
+      border: 2px solid #7b2cbf;
+      color: #7b2cbf;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .step.active {
+      background-color: #7b2cbf;
+      color: #fff;
+    }
+
+    .question {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #4a148c;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .loader {
+      border: 6px solid #e0cfff;
+      border-top: 6px solid #7b2cbf;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    footer {
+      font-size: 10px;
+      color: #999;
+      text-align: center;
+      padding: 20px 10px;
+      line-height: 1.4;
+    }
+
+    footer a {
+      color: #999;
+      text-decoration: underline;
+      margin: 0 5px;
+    }
+
+    /* ✨ Modal Styling */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 360px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .modal h3 {
+      color: #7b2cbf;
+      margin-bottom: 10px;
+    }
+
+    .modal p {
+      color: #555;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    .modal .btn {
+      margin-bottom: 10px;
+    }
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Are You One of the Few Who Qualify to See the <span class="highlight">“Purple Tonic Trick”</span>?</h2>
+    <p class="subheadline">Answer these 4 quick questions to find out if you're eligible to watch the video everyone’s whispering about.</p>
+
+    <div class="image-box" id="step-image">
+      <img src="purple_tonic.png" alt="Purple Tonic Image"/>
+    </div>
+
+    <div class="progress">
+      <div class="step active">1</div>
+      <div class="step">2</div>
+      <div class="step">3</div>
+      <div class="step">4</div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div id="step-1">
+      <div class="question">Are you a man or a woman?</div>
+      <button class="btn" onclick="goToStep(2)">Man</button>
+      <button class="btn" onclick="goToStep(2)">Woman</button>
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="step-2" class="hidden">
+      <div class="question">What is your weight loss goal?</div>
+      <button class="btn" onclick="goToStep(3)">Lose 1–20 pounds</button>
+      <button class="btn" onclick="goToStep(3)">Lose 21–50 pounds</button>
+      <button class="btn" onclick="goToStep(3)">Lose over 50 pounds</button>
+    </div>
+
+    <!-- STEP 3 -->
+    <div id="step-3" class="hidden">
+      <div class="question">Would you like to lose up to 2 lbs of fat every 48 hours?</div>
+      <button class="btn" onclick="goToStep(4)">Yes</button>
+      <button class="btn" onclick="handleNoClickOnStep3()">No</button>
+
+    </div>
+
+    <!-- STEP 4 -->
+    <div id="step-4" class="hidden">
+      <div class="question">This video reveals the <span class="highlight">Purple Tonic Trick</span>. Will you promise to watch it in full?</div>
+      <button class="btn" onclick="goToLoading()">Yes</button>
+      <button class="btn" onclick="alert('You must agree to watch the video to continue.')">No</button>
+    </div>
+
+    <!-- LOADING SCREEN -->
+    <div id="loading-screen" class="hidden">
+      <div class="loader"></div>
+      <p class="question">Analyzing your responses... please wait.</p>
+    </div>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Wait a second!</h3>
+        <p>Most people who clicked "No" changed their mind after seeing the results. Want to give it a shot?</p>
+        <button class="btn" onclick="closeModalAndContinue()">Yes, continue</button>
+        <button class="btn" onclick="closeModal()">No thanks</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <footer>
+    <p>&copy; 2025 nutrition-hub.org. All rights reserved.</p>
+    <p>This site is not part of, nor endorsed by, Facebook™. Facebook™ is a trademark of Meta Platforms, Inc.</p>
+    <p>
+      <a href="terms.html">Terms</a> |
+      <a href="disclaimer.html">Disclaimer</a> |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="contact.html">Contact Us</a>
+    </p>
+  </footer>
+
+
+<script>
+  let modalShown = false;
+
+  function goToStep(stepNumber) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    document.querySelectorAll('[id^="step-"]').forEach(el => el.classList.add('hidden'));
+    document.getElementById(`step-${stepNumber}`).classList.remove('hidden');
+
+    document.getElementById('step-image').style.display = stepNumber === 1 ? 'block' : 'none';
+
+    document.querySelectorAll('.step').forEach((step, index) => {
+      step.classList.toggle('active', index < stepNumber);
+    });
+  }
+
+  function handleNoClickOnStep3() {
+    if (!modalShown) {
+      showModal();
+      modalShown = true;
+    } else {
+      goToStep(4);
+    }
+  }
+
+  function showModal() {
+    document.getElementById("modal").classList.remove("hidden");
+  }
+
+  function closeModal() {
+    document.getElementById("modal").classList.add("hidden");
+  }
+
+  function closeModalAndContinue() {
+    closeModal();
+    goToStep(4);
+  }
+
+  function goToLoading() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    document.querySelectorAll('[id^="step-"]').forEach(el => el.classList.add('hidden'));
+    document.getElementById('step-image').style.display = 'none';
+    document.getElementById('loading-screen').classList.remove('hidden');
+
+    setTimeout(() => {
+      window.location.href = "https://track.nutr.site/click";
+    }, 3000);
+  }
+</script>
+
+<script src="https://track.nutr.site/unilpclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=&regviewonce=false"></script>
+</body>
+</html>
+
+
