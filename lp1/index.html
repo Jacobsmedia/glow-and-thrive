@@ -1,19 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Untitled</title>
-  
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Hack Quiz - Transformational Weight Loss</title>
+    <title>Please answer the questions below to see if you qualify to view this short educational video.</title>
     <link href="https://ext.same-assets.com/1635112822/351187734.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
     <style>
         @font-face {
@@ -37,8 +27,8 @@
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
             padding: 20px;
         }
 
@@ -50,6 +40,10 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             padding: 40px;
             text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .progress-bar {
@@ -101,58 +95,35 @@
         }
 
         .elem__radio {
-            margin: 15px 0;
-            text-align: left;
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 10px 0;
+            text-align: center;
         }
 
         .elem__radio input[type="radio"] {
-            margin-right: 12px;
-            transform: scale(1.2);
+            display: none;
         }
 
         .elem__radio label {
-            font-size: 1.2em;
-            color: #343a3c;
+            display: block;
+            background-color: #4a9eff;
+            color: #fff;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 1.1em;
+            margin: 0 auto;
+            max-width: 320px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            border-radius: 5px;
             transition: background-color 0.2s ease;
         }
 
         .elem__radio label:hover {
-            background-color: #f5f5f5;
-        }
-
-        .elem__radio input[type="radio"]:checked + label {
-            background-color: #e0f2ff;
-            border: 2px solid #4a9eff;
-        }
-
-        .next-btn {
-            background-color: #4a9eff;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: background-color 0.3s ease;
-            display: none;
-        }
-
-        .next-btn:hover {
             background-color: #3a8eef;
         }
 
-        .next-btn.show {
-            display: inline-block;
+        .elem__radio input[type="radio"]:checked + label {
+            background-color: #3577d4;
         }
+
 
         .modal__wrapper {
             display: none;
@@ -252,22 +223,30 @@
             font-style: italic;
         }
 
+        footer {
+            font-size: 10px;
+            color: #999;
+            text-align: center;
+            padding: 20px 10px;
+            line-height: 1.4;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #999;
+            text-decoration: underline;
+            margin: 0 5px;
+        }
+
         @media (max-width: 768px) {
-            .form__wrapper {
-                padding: 20px;
-            }
-
-            .title__main h1 {
-                font-size: 1.8em;
-            }
-
-            .title__main h2 {
-                font-size: 1.1em;
-            }
-
-            .title p {
-                font-size: 1.4em;
-            }
+            .progress-bar { margin-bottom: 20px; }
+            body { padding: 10px; }
+            .form__wrapper { padding: 20px 15px; box-shadow: none; }
+            .title__main h1 { font-size: 1.6em; }
+            .title__main h2 { font-size: 1em; }
+            .title p { font-size: 1.2em; }
+            .elem__radio { max-width: 100%; }
+            .elem__radio label { font-size: 1em; padding: 15px; max-width: 100%; }
         }
     </style>
 </head>
@@ -279,7 +258,7 @@
 
         <form id="quizForm">
             <div class="title__main">
-                <h1>Most People Have No Idea About This Transformational Coffee Hack... It Has Been Life Changing</h1>
+                <h1>Please answer the questions below to see if you qualify to view this short educational video.</h1>
                 <h2>Take The Short Quiz Below To See If It Can Work For You Too</h2>
             </div>
 
@@ -345,7 +324,7 @@
 
             <div class="form__step" data-step="5">
                 <div class="title">
-                    <p>Are you interested in seeing how an easy coffee hack can help you burn up to 2.3 lbs of stubborn belly fat every 48 hours?</p>
+                    <p>Are you interested in seeing how an easy ice hack can help you burn up to 2.3 lbs of stubborn belly fat every 48 hours?</p>
                 </div>
                 <div class="elem__radio">
                     <input type="radio" id="radio10" name="step5" value="Yes">
@@ -371,7 +350,6 @@
                 </div>
             </div>
 
-            <button type="button" class="next-btn" id="nextBtn">Next Question</button>
         </form>
     </div>
 
@@ -383,10 +361,10 @@
             </div>
             <div class="desc">
                 <p>Thank You For Completing Our Quiz!</p>
-                <span>Your Results Qualify You For The "10-Second Exotic Coffee Hack"</span>
+                <span>Your Results Qualify You For The "10-Second Exotic Ice Hack"</span>
             </div>
             <div class="bottom">
-                <a href="#" target="_blank">
+                <a href="https://track.nutr.site/click" target="_blank">
                     <span class="main">Click Here For Full Video Instructions</span>
                     <span class="sub">AND RECEIVE YOUR COMPLETE BLUEPRINT</span>
                 </a>
@@ -394,6 +372,17 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2025 nutrition-hub.org. All rights reserved.</p>
+        <p>This site is not part of, nor endorsed by, Facebook™. Facebook™ is a trademark of Meta Platforms, Inc.</p>
+        <p>
+            <a href="terms.html">Terms</a> |
+            <a href="disclaimer.html">Disclaimer</a> |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </footer>
 
     <script>
         let currentStep = 1;
@@ -417,33 +406,16 @@
             updateProgress();
         }
 
-        function checkCurrentStepSelection() {
-            const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
-            const selectedInput = currentStepElement.querySelector('input[type="radio"]:checked');
-            const nextBtn = document.getElementById('nextBtn');
-
-            if (selectedInput) {
-                nextBtn.classList.add('show');
-            } else {
-                nextBtn.classList.remove('show');
-            }
-        }
-
-        // Add event listeners to all radio buttons
+        // Advance automatically when an option is selected
         document.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', checkCurrentStepSelection);
-        });
-
-        // Next button functionality
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            if (currentStep < totalSteps) {
-                currentStep++;
-                showStep(currentStep);
-                checkCurrentStepSelection();
-            } else {
-                // Show modal
-                document.getElementById('modal').classList.add('show');
-            }
+            radio.addEventListener('change', function() {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                } else {
+                    document.getElementById('modal').classList.add('show');
+                }
+            });
         });
 
         // Close modal
@@ -461,11 +433,7 @@
 
         // Initialize
         updateProgress();
-        checkCurrentStepSelection();
     </script>
-</body>
-</html>
-<!-- partial -->
-  
+    <script src="https://track.nutr.site/unilpclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=&regviewonce=false"></script>
 </body>
 </html>
