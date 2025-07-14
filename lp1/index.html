@@ -91,36 +91,33 @@
         }
 
         .elem__radio {
-            margin: 15px 0;
-            text-align: left;
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 10px 0;
+            text-align: center;
         }
 
         .elem__radio input[type="radio"] {
-            margin-right: 12px;
-            transform: scale(1.2);
+            display: none;
         }
 
         .elem__radio label {
-            font-size: 1.2em;
-            color: #343a3c;
+            display: block;
+            background-color: #4a9eff;
+            color: #fff;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 1.1em;
+            margin: 0 auto;
+            max-width: 320px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            border-radius: 5px;
             transition: background-color 0.2s ease;
         }
 
         .elem__radio label:hover {
-            background-color: #f5f5f5;
+            background-color: #3a8eef;
         }
 
         .elem__radio input[type="radio"]:checked + label {
-            background-color: #e0f2ff;
-            border: 2px solid #4a9eff;
+            background-color: #3577d4;
         }
 
         .next-btn {
@@ -242,6 +239,20 @@
             font-style: italic;
         }
 
+        footer {
+            font-size: 10px;
+            color: #999;
+            text-align: center;
+            padding: 20px 10px;
+            line-height: 1.4;
+        }
+
+        footer a {
+            color: #999;
+            text-decoration: underline;
+            margin: 0 5px;
+        }
+
         @media (max-width: 768px) {
             .progress-bar { margin-bottom: 20px; }
             body { padding: 10px; }
@@ -250,7 +261,7 @@
             .title__main h2 { font-size: 1em; }
             .title p { font-size: 1.2em; }
             .elem__radio { max-width: 100%; }
-            .elem__radio label { font-size: 1.1em; padding: 15px; }
+            .elem__radio label { font-size: 1em; padding: 15px; max-width: 100%; }
             .next-btn { width: 100%; font-size: 1.1em; padding: 15px; }
         }
     </style>
@@ -378,6 +389,17 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2025 nutrition-hub.org. All rights reserved.</p>
+        <p>This site is not part of, nor endorsed by, Facebook™. Facebook™ is a trademark of Meta Platforms, Inc.</p>
+        <p>
+            <a href="terms.html">Terms</a> |
+            <a href="disclaimer.html">Disclaimer</a> |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </footer>
 
     <script>
         let currentStep = 1;
