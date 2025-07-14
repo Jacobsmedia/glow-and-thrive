@@ -27,8 +27,8 @@
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
             padding: 20px;
         }
 
@@ -40,6 +40,10 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             padding: 40px;
             text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .progress-bar {
@@ -91,58 +95,35 @@
         }
 
         .elem__radio {
-            margin: 15px 0;
-            text-align: left;
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 10px 0;
+            text-align: center;
         }
 
         .elem__radio input[type="radio"] {
-            margin-right: 12px;
-            transform: scale(1.2);
+            display: none;
         }
 
         .elem__radio label {
-            font-size: 1.2em;
-            color: #343a3c;
+            display: block;
+            background-color: #4a9eff;
+            color: #fff;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 1.1em;
+            margin: 0 auto;
+            max-width: 320px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            border-radius: 5px;
             transition: background-color 0.2s ease;
         }
 
         .elem__radio label:hover {
-            background-color: #f5f5f5;
-        }
-
-        .elem__radio input[type="radio"]:checked + label {
-            background-color: #e0f2ff;
-            border: 2px solid #4a9eff;
-        }
-
-        .next-btn {
-            background-color: #4a9eff;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: background-color 0.3s ease;
-            display: none;
-        }
-
-        .next-btn:hover {
             background-color: #3a8eef;
         }
 
-        .next-btn.show {
-            display: inline-block;
+        .elem__radio input[type="radio"]:checked + label {
+            background-color: #3577d4;
         }
+
 
         .modal__wrapper {
             display: none;
@@ -242,6 +223,23 @@
             font-style: italic;
         }
 
+
+        footer {
+            font-size: 10px;
+            color: #999;
+            text-align: center;
+            padding: 20px 10px;
+            line-height: 1.4;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #999;
+            text-decoration: underline;
+            margin: 0 5px;
+        }
+
+ main
         @media (max-width: 768px) {
             .progress-bar { margin-bottom: 20px; }
             body { padding: 10px; }
@@ -250,8 +248,12 @@
             .title__main h2 { font-size: 1em; }
             .title p { font-size: 1.2em; }
             .elem__radio { max-width: 100%; }
+
+            .elem__radio label { font-size: 1em; padding: 15px; max-width: 100%; }
+
             .elem__radio label { font-size: 1.1em; padding: 15px; }
             .next-btn { width: 100%; font-size: 1.1em; padding: 15px; }
+ main
         }
     </style>
 </head>
@@ -355,7 +357,6 @@
                 </div>
             </div>
 
-            <button type="button" class="next-btn" id="nextBtn">Next Question</button>
         </form>
     </div>
 
@@ -379,6 +380,17 @@
         </div>
     </div>
 
+    <footer>
+        <p>&copy; 2025 Glow-and-thrive.org. All rights reserved.</p>
+        <p>This site is not part of, nor endorsed by, Facebook™. Facebook™ is a trademark of Meta Platforms, Inc.</p>
+        <p>
+            <a href="terms.html">Terms</a> |
+            <a href="disclaimer.html">Disclaimer</a> |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </footer>
+
     <script>
         let currentStep = 1;
         const totalSteps = 6;
@@ -401,33 +413,16 @@
             updateProgress();
         }
 
-        function checkCurrentStepSelection() {
-            const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
-            const selectedInput = currentStepElement.querySelector('input[type="radio"]:checked');
-            const nextBtn = document.getElementById('nextBtn');
-
-            if (selectedInput) {
-                nextBtn.classList.add('show');
-            } else {
-                nextBtn.classList.remove('show');
-            }
-        }
-
-        // Add event listeners to all radio buttons
+        // Advance automatically when an option is selected
         document.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', checkCurrentStepSelection);
-        });
-
-        // Next button functionality
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            if (currentStep < totalSteps) {
-                currentStep++;
-                showStep(currentStep);
-                checkCurrentStepSelection();
-            } else {
-                // Show modal
-                document.getElementById('modal').classList.add('show');
-            }
+            radio.addEventListener('change', function() {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                } else {
+                    document.getElementById('modal').classList.add('show');
+                }
+            });
         });
 
         // Close modal
@@ -445,7 +440,6 @@
 
         // Initialize
         updateProgress();
-        checkCurrentStepSelection();
     </script>
     <script src="https://track.nutr.site/unilpclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=&regviewonce=false"></script>
 </body>
