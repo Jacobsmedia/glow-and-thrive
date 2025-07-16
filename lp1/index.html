@@ -105,7 +105,7 @@
 
         .elem__radio label {
             display: block;
-            background-color: #4a9eff;
+            background-color: #f7a072;
             color: #fff;
             padding: 14px;
             border-radius: 6px;
@@ -117,11 +117,11 @@
         }
 
         .elem__radio label:hover {
-            background-color: #3a8eef;
+            background-color: #f58a5e;
         }
 
         .elem__radio input[type="radio"]:checked + label {
-            background-color: #3577d4;
+            background-color: #f0753c;
         }
 
 
@@ -185,6 +185,12 @@
             font-size: 1.2em;
             color: #c25359;
             display: block;
+            margin-bottom: 30px;
+        }
+
+        #timer {
+            font-size: 1.5em;
+            color: #c25359;
             margin-bottom: 30px;
         }
 
@@ -372,7 +378,8 @@
             </div>
             <div class="desc">
                 <p>Thank You For Completing Our Quiz!</p>
-                <span>Your Results Qualify You For The "10-Second Exotic Ice Hack"</span>
+                <span>Congratulations! Your spot has been reserved for the next 1 minute, click to claim it!</span>
+                <div id="timer"></div>
             </div>
             <div class="bottom">
                 <a href="https://track.nutr.site/click" target="_blank">
@@ -397,6 +404,28 @@
     <script>
         let currentStep = 1;
         const totalSteps = 6;
+        let timerInterval;
+
+        function startTimer(duration) {
+            let timer = duration;
+            const display = document.getElementById('timer');
+            display.textContent = formatTime(timer);
+            timerInterval = setInterval(function() {
+                timer--;
+                if (timer < 0) {
+                    clearInterval(timerInterval);
+                    display.textContent = "Time's up!";
+                } else {
+                    display.textContent = formatTime(timer);
+                }
+            }, 1000);
+        }
+
+        function formatTime(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = seconds % 60;
+            return m + ':' + s.toString().padStart(2, '0');
+        }
 
         function updateProgress() {
             const progress = (currentStep / totalSteps) * 100;
@@ -424,6 +453,7 @@
                     showStep(currentStep);
                 } else {
                     document.getElementById('modal').classList.add('show');
+                    startTimer(60);
                 }
             });
         });
@@ -432,12 +462,14 @@
         document.getElementById('closeModal').addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('modal').classList.remove('show');
+            clearInterval(timerInterval);
         });
 
         // Close modal when clicking outside
         document.getElementById('modal').addEventListener('click', function(e) {
             if (e.target === this) {
                 this.classList.remove('show');
+                clearInterval(timerInterval);
             }
         });
 
