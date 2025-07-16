@@ -211,8 +211,23 @@
             margin: 0 10px;
         }
 
+
         .footer-links a:hover {
             text-decoration: underline;
+        }
+
+        .testimonial {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
         }
 
         /* Responsive adjustments */
@@ -249,7 +264,10 @@
             </div>
 
             <div class="content-text">
-                <p><strong>Lisa S. (Mother of 2, Rediscovered Her Confidence)</strong></p>
+                <div class="testimonial">
+                    <img src="lias.png" alt="Lisa S." class="testimonial-image">
+                    <p>From: <strong>Lisa S.</strong> (Mother of 2, Rediscovered Her Confidence)</p>
+                </div>
 
                 <p><strong>Stop everything you're doing and read this.</strong></p>
 
