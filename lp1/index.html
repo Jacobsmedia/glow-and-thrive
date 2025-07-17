@@ -1,481 +1,334 @@
 <!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WARNING: This Controversial Harvard-Backed Method Is Not For Everyone.</title>
-    <link href="https://ext.same-assets.com/1635112822/351187734.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+    <title>Ice Water Hack - glow-and-thrive.org</title>
     <style>
-        @font-face {
-            font-family: 'Ubuntu';
-            src: url('https://ext.same-assets.com/1635112822/351187734.woff2') format('woff2');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-
+        /* Reset CSS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Body and general styles */
         body {
-            font-family: 'Ubuntu', Arial, sans-serif;
-            background-color: #fbfbfb;
-            color: #343a3c;
+            font-family: 'Roboto', Arial, sans-serif;
             line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            color: #333;
+            background-color: #f8f6fa;
+        }
+
+        /* Container */
+        #container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
         }
 
-        .form__wrapper {
-            max-width: 800px;
-            width: 100%;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        /* Main content */
+        .content-wrapper {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background-color: #cbd2d0;
-            border-radius: 4px;
-            margin-bottom: 40px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background-color: #4a9eff;
-            width: 16.67%;
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-
-        .title__main h1 {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: #343a3c;
-            margin-bottom: 20px;
+        /* Header styles */
+        h1 {
+            font-size: 32px;
             line-height: 1.2;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #003366;
         }
 
-        .title__main h2 {
-            font-size: 1.4em;
-            color: #c25359;
-            font-weight: 400;
+        h1 .highlight {
+            color: #007bff;
+        }
+
+        h1 em {
             font-style: italic;
-            margin-bottom: 40px;
         }
 
-        .title p {
-            font-size: 1.8em;
-            font-weight: 600;
-            color: #343a3c;
-            margin-bottom: 30px;
-        }
-
-        .form__step {
-            display: none;
-        }
-
-        .form__step.current {
-            display: block;
-        }
-
-        .elem__radio {
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .elem__radio input[type="radio"] {
-            display: none;
-        }
-
-        .elem__radio label {
-            display: block;
-            background-color: #f7a072;
-            color: #fff;
-            padding: 14px;
-            border-radius: 6px;
-            font-size: 1.1em;
-            margin: 0 auto;
-            max-width: 320px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .elem__radio label:hover {
-            background-color: #f58a5e;
-        }
-
-        .elem__radio input[type="radio"]:checked + label {
-            background-color: #f0753c;
-        }
-
-
-        .modal__wrapper {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal__wrapper.show {
+        /* Video section */
+        .video-container {
             display: flex;
+            justify-content: center;
+            margin: 20px 0;
         }
 
-        .box {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 24px;
-            color: #999;
-            text-decoration: none;
+        .video-image {
+            width: 100%;
+            max-width: 760px;
+            height: auto;
             cursor: pointer;
         }
 
-        .close:hover {
-            color: #333;
+        /* Content text */
+        .content-text {
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 18px;
         }
 
-        .result p {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #4a9eff;
+        .content-text p {
+            margin-bottom: 15px;
+        }
+
+        .content-text strong {
+            font-weight: bold;
+        }
+
+        /* Button */
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 1.8s infinite;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 86, 179, 0.4);
+        }
+
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+
+        /* Quick info icons */
+        .info-icons {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 760px;
+            margin: 10px auto;
+            font-size: 16px;
+        }
+
+        .info-icons span {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Urgent scarcity bar */
+        .scarcity-bar {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            font-weight: bold;
+            padding: 15px;
+            max-width: 760px;
+            margin: 20px auto;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .scarcity-bar p {
+            margin-bottom: 8px;
+        }
+        /* Scientific References */
+        .references-section {
+            margin: 30px 0;
+        }
+
+        .references-section h2 {
+            text-align: center;
+            color: #003366;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .references-logos {
+            display: flex;
+            justify-content: center;
             margin-bottom: 20px;
         }
 
-        .desc p {
-            font-size: 1.4em;
-            font-weight: 600;
-            color: #343a3c;
-            margin-bottom: 15px;
+        .reference-logo {
+            max-width: 100%;
+            height: auto;
         }
 
-        .desc span {
-            font-size: 1.2em;
-            color: #c25359;
-            display: block;
-            margin-bottom: 30px;
-        }
-
-        #timer {
-            font-size: 1.5em;
-            color: #c25359;
-            margin-bottom: 30px;
-        }
-
-        .bottom a {
-            display: inline-block;
-            background: linear-gradient(135deg, #28a745, #85e084);
-            color: white;
-            text-decoration: none;
-            padding: 20px 30px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .bottom a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
-        }
-
-        .bottom .main {
-            display: block;
-            font-size: 1.3em;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .bottom .sub {
-            display: block;
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
-
-        .bottom span:last-child {
-            font-size: 0.9em;
-            color: #9b9b9b;
-            font-style: italic;
-        }
-
-
-        footer {
-            font-size: 10px;
-            color: #999;
+        /* Footer */
+        .footer {
             text-align: center;
-            padding: 20px 10px;
-            line-height: 1.4;
-            margin-top: 20px;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
         }
 
-        footer a {
-            color: #999;
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: #003366;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+
+        .footer-links a:hover {
             text-decoration: underline;
-            margin: 0 5px;
         }
 
-        .smaller-text {
-            font-size: 0.85em;
+        .testimonial {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
+        .testimonial-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .progress-bar { margin-bottom: 20px; }
-            body { padding: 10px; }
-            .form__wrapper { padding: 20px 15px; box-shadow: none; }
-            .title__main h1 { font-size: 1.6em; }
-            .title__main h2 { font-size: 1em; }
-            .title p { font-size: 1.2em; }
-            .elem__radio { max-width: 100%; }
+            h1 {
+                font-size: 24px;
+            }
 
-            .smaller-text { font-size: 0.9em; }
+            .content-text {
+                font-size: 16px;
+            }
 
-            .elem__radio label { font-size: 1em; padding: 15px; max-width: 100%; }
-
-            .elem__radio label { font-size: 1.1em; padding: 15px; }
-            .next-btn { width: 100%; font-size: 1.1em; padding: 15px; }
+            .action-button {
+                font-size: 18px;
+                padding: 12px 24px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="form__wrapper">
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
+    <div id="container">
+        <div class="content-wrapper">
+            <header>
+                <h1>Harvard Discovery: <span class="highlight">"Ice Water Hack"</span> <em>Melts</em> Stubborn Fat—Even While You Sleep!</h1>
+            </header>
 
-        <form id="quizForm">
-            <div class="title__main">
-                <h1>WARNING: This Controversial Harvard-Backed Method Is Not For Everyone.</h1>
-                <h2>Take The 5-Second Quiz Below To Confirm You Qualify To View This Private Presentation</h2>
-            </div>
-
-            <div class="form__step current" data-step="1">
-                <div class="title">
-                    <p>Are you a man or woman over the age of 30?</p>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio1" name="step1" value="Man">
-                    <label for="radio1">Man</label>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio2" name="step1" value="Woman">
-                    <label for="radio2">Woman</label>
-                </div>
-            </div>
-
-            <div class="form__step" data-step="2">
-                <div class="title">
-                    <p>Have you been on more than 3 diets in the last 12 months?</p>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio3" name="step2" value="Yes">
-                    <label for="radio3">Yes</label>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio4" name="step2" value="No">
-                    <label for="radio4">No</label>
-                </div>
-            </div>
-
-            <div class="form__step" data-step="3">
-                <div class="title">
-                    <p>What is your weight loss goal?</p>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio5" name="step3" value="1-20 pounds">
-                    <label for="radio5">Lose 1 - 20 pounds for good</label>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio6" name="step3" value="21-50 pounds">
-                    <label for="radio6">Lose 21 - 50 pounds for good</label>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio7" name="step3" value="50+ pounds">
-                    <label for="radio7">Lose over 50 pounds for good</label>
-                </div>
-            </div>
-
-            <div class="form__step" data-step="4">
-                <div class="title">
-                    <p>Have you been diagnosed with "metabolic syndrome" by your doctor?</p>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio8" name="step4" value="Yes">
-                    <label for="radio8">Yes</label>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio9" name="step4" value="No">
-                    <label for="radio9">No</label>
-                </div>
-            </div>
-
-            <div class="form__step" data-step="5">
-                <div class="title">
-                    <p>Are you interested in seeing how an easy ice hack can help you burn up to 2.3 lbs of stubborn belly fat every 48 hours?</p>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio10" name="step5" value="Yes">
-                    <label for="radio10">Yes</label>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio11" name="step5" value="No">
-                    <label for="radio11">No</label>
-                </div>
-            </div>
-
-            <div class="form__step" data-step="6">
-                <div class="title">
-                    <p class="smaller-text">This free video tutorial reveals the bizarre &quot;Alpine Ice Hack&quot; that is helping people over 45 dissolve stubborn fat while they sleep. This information is highly controversial and is being actively targeted by the weight-loss industry. We only want to share it with people who are serious about changing their lives. Do you want to be one of the few people?</p>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio12" name="step6" value="Yes">
-                    <label for="radio12">Yes</label>
-                </div>
-                <div class="elem__radio">
-                    <input type="radio" id="radio13" name="step6" value="No">
-                    <label for="radio13">No</label>
-                </div>
-            </div>
-
-        </form>
-    </div>
-
-    <div class="modal__wrapper" id="modal">
-        <div class="box">
-            <a href="#" class="close" id="closeModal">&times;</a>
-            <div class="result">
-                <p>RESULTS ANALYSIS COMPLETE</p>
-            </div>
-            <div class="desc">
-                <p>Thank You For Completing Our Quiz!</p>
-                <span>Congratulations! Your spot has been reserved for the next 1 minute, click to claim it!</span>
-                <div id="timer"></div>
-            </div>
-            <div class="bottom">
+            <div class="video-container">
                 <a href="https://track.nutr.site/click" target="_blank">
-                    <span class="main">Click Here For Full Video Instructions</span>
-                    <span class="sub">AND RECEIVE YOUR COMPLETE BLUEPRINT</span>
+                    <img src="image_for_lp.png" alt="Ice Water Hack Video" class="video-image">
                 </a>
             </div>
+            <div class="info-icons">
+                <span>🔬 Based on Harvard Research</span> | <span>🍃 100% Plant-Based Method</span> | <span>✔️ Vetted by 20+ Scientific Studies</span>
+            </div>
+
+            <div class="content-text">
+                <div class="testimonial">
+                    <img src="lias.png" alt="Lisa S." class="testimonial-image">
+                    <p>From: <strong>Lisa S.</strong> (Mother of 2, Rediscovered Her Confidence)</p>
+                </div>
+
+                <p><strong>Stop everything you're doing and read this.</strong></p>
+
+                <p>For years, I believed a lie. I thought the ever-growing fat around my belly, hips, and arms was my fault. I blamed myself after every failed diet.</p>
+
+                <p>I was told to eat less and exercise more. I starved myself with salads while my family ate pizza. I spent hours on treadmills going nowhere. Does this sound familiar?</p>
+
+                <p><strong>It's NOT your fault.</strong> And a recent, controversial Harvard discovery proves it.</p>
+
+                <p><strong>They found that most people over 40 have "dormant" slimming cells.</strong> It&rsquo;s like the fat-burning engine in your body has been switched off. This is why you can do everything "right" and the scale won't move.</p>
+
+                <p>But you can flip that switch back on.</p>
+
+                <p>This bizarre <strong>"Ice Water Hack"</strong> takes just six seconds before bed. This simple ritual activates those sleeping fat-burning engines, forcing your body to dissolve its most stubborn, deepest fat stores for fuel while you sleep.</p>
+
+                <p><strong>The results are almost unbelievable.</strong> People are waking up feeling lighter, more energetic, and are watching their favorite clothes become loose in just a few weeks. Imagine finally feeling confident at the beach or wearing that dress you&rsquo;ve hidden in your closet for years.</p>
+
+                <p>The billion-dollar weight loss industry is terrified of this. They make money keeping you stuck and hopeless. They've already tried to have this presentation removed from the internet.</p>
+
+                <p>So please, watch it now while you still can. It reveals the exact method you can start using at home tonight.</p>
+            </div>
+
+            <div class="button-container">
+                <a href="https://track.nutr.site/click" class="action-button" target="_blank">Reveal The Ice Water Hack Now</a>
+            </div>
+            <div class="scarcity-bar">
+                <p>WARNING: Due to expected high demand, this presentation will be taken offline once all spots are claimed.</p>
+                <p>Official Site: ✅ This is the Official & Secure Page.</p>
+                <p>Availability: 🟢 GUARANTEED... for the next 24 hours only.</p>
+            </div>
+
+
+            <div class="references-section">
+                <h2>Scientific References</h2>
+                <div class="references-logos">
+                    <img src="https://ext.same-assets.com/2588582735/3390624869.webp" alt="Scientific References" class="reference-logo">
+                </div>
+            </div>
+
+            <div class="button-container">
+                <a href="https://track.nutr.site/click" class="action-button" target="_blank">Try The Ice Water Hack Before It's Gone</a>
+            </div>
         </div>
+
+        
+        <footer class="footer">
+            <p>Copyright 2025 Glow-and-thrive.org. All rights reserved.</p>
+            <p>This site is not part, neither is it endorsed by FACEBOOK™. FACEBOOK™ is a trademark of FACEBOOK™, Inc.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a> |
+                <a href="terms.html">Terms of Service</a> |
+                <a href="disclaimer.html">Disclaimer</a> |
+                <a href="contact.html">Contact</a>
+            </div>
+</footer>
+
     </div>
-
-    <footer>
-        <p>&copy; 2025 Glow-and-thrive.org. All rights reserved.</p>
-        <p>This site is not part of, nor endorsed by, Facebook™. Facebook™ is a trademark of Meta Platforms, Inc.</p>
-        <p>
-            <a href="terms.html">Terms</a> |
-            <a href="disclaimer.html">Disclaimer</a> |
-            <a href="privacy.html">Privacy Policy</a> |
-            <a href="contact.html">Contact Us</a>
-        </p>
-    </footer>
-
-    <script>
-        let currentStep = 1;
-        const totalSteps = 6;
-        let timerInterval;
-
-        function startTimer(duration) {
-            let timer = duration;
-            const display = document.getElementById('timer');
-            display.textContent = formatTime(timer);
-            timerInterval = setInterval(function() {
-                timer--;
-                if (timer < 0) {
-                    clearInterval(timerInterval);
-                    display.textContent = "Time's up!";
-                } else {
-                    display.textContent = formatTime(timer);
-                }
-            }, 1000);
-        }
-
-        function formatTime(seconds) {
-            const m = Math.floor(seconds / 60);
-            const s = seconds % 60;
-            return m + ':' + s.toString().padStart(2, '0');
-        }
-
-        function updateProgress() {
-            const progress = (currentStep / totalSteps) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
-        }
-
-        function showStep(step) {
-            // Hide all steps
-            document.querySelectorAll('.form__step').forEach(el => {
-                el.classList.remove('current');
-            });
-
-            // Show current step
-            document.querySelector(`[data-step="${step}"]`).classList.add('current');
-
-            // Update progress
-            updateProgress();
-        }
-
-        // Advance automatically when an option is selected
-        document.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (currentStep < totalSteps) {
-                    currentStep++;
-                    showStep(currentStep);
-                } else {
-                    document.getElementById('modal').classList.add('show');
-                    startTimer(60);
-                }
-            });
-        });
-
-        // Close modal
-        document.getElementById('closeModal').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('modal').classList.remove('show');
-            clearInterval(timerInterval);
-        });
-
-        // Close modal when clicking outside
-        document.getElementById('modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.remove('show');
-                clearInterval(timerInterval);
-            }
-        });
-
-        // Initialize
-        updateProgress();
-    </script>
     <script src="https://track.nutr.site/unilpclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=&regviewonce=false"></script>
+</body>
+</html>
+<!-- partial -->
+  
 </body>
 </html>
