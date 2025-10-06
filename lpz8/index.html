@@ -1,339 +1,405 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <script>
-    if (window.self !== window.top) {
-      window.top.location = window.location.href;
-    }
-  </script>
-  <title>Untitled</title>
-
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Himalayan Pink Salt and Ice Hack - glow-and-thrive.org</title>
+    <title>Harvard Study Links Bedtime Ritual to Metabolic Health | Health Insights Daily</title>
+    <script>
+        if (window.self !== window.top) {
+            window.top.location = window.location.href;
+        }
+    </script>
     <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
+        :root {
+            color-scheme: light;
+            --brand-blue: #0b3d62;
+            --accent-red: #c93c3c;
+            --soft-gray: #f5f7fa;
+            --border-gray: #d1d7df;
+            --body-font: 'Merriweather', Georgia, 'Times New Roman', serif;
+            --ui-font: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        *, *::before, *::after {
             box-sizing: border-box;
         }
 
-        /* Body and general styles */
         body {
-            font-family: 'Roboto', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f6fa;
+            margin: 0;
+            font-family: var(--body-font);
+            line-height: 1.7;
+            background: var(--soft-gray);
+            color: #20242c;
         }
 
-        /* Container */
-        #container {
-            max-width: 1200px;
+        a {
+            color: var(--brand-blue);
+        }
+
+        .page {
+            max-width: 1180px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 24px 20px 48px;
         }
 
-        /* Main content */
-        .content-wrapper {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Header styles */
-        h1 {
-            font-size: 32px;
-            line-height: 1.2;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #003366;
-        }
-
-        h1 .highlight {
-            color: #007bff;
-        }
-
-        h1 em {
-            font-style: italic;
-        }
-
-        /* Video section */
-        .video-container {
+        .masthead {
+            border-bottom: 4px double var(--border-gray);
+            margin-bottom: 24px;
+            padding-bottom: 16px;
             display: flex;
-            justify-content: center;
-            margin: 20px 0;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .video-image {
-            width: 100%;
-            max-width: 760px;
-            height: auto;
-            cursor: pointer;
-        }
-
-        /* Content text */
-        .content-text {
-            max-width: 760px;
-            margin: 0 auto;
-            font-size: 18px;
-        }
-
-        .content-text p {
-            margin-bottom: 15px;
-        }
-
-        .content-text strong {
-            font-weight: bold;
-        }
-
-        /* Button */
-        .button-container {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .action-button {
-            display: inline-block;
-            background-color: #007bff;
-            color: #fff;
-            font-size: 20px;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
-            transition: all 0.3s ease;
-            animation: pulse 1.8s infinite;
-        }
-
-        .action-button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 86, 179, 0.4);
-        }
-
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-
-        /* Quick info icons */
-        .info-icons {
+        .masthead-top {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            max-width: 760px;
-            margin: 10px auto;
-            font-size: 16px;
+            font-family: var(--ui-font);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            color: #5a6472;
         }
 
-        .info-icons span {
+        .masthead-brand {
             display: flex;
-            align-items: center;
+            align-items: baseline;
+            gap: 12px;
         }
 
-        /* Urgent scarcity bar */
-        .scarcity-bar {
-            background-color: #fff3cd;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            font-weight: bold;
-            padding: 15px;
-            max-width: 760px;
-            margin: 20px auto;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 16px;
+        .brand-name {
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--brand-blue);
+            letter-spacing: 0.06em;
         }
 
-        .scarcity-bar p {
-            margin-bottom: 8px;
-        }
-        /* Scientific References */
-        .references-section {
-            margin: 30px 0;
-        }
-
-        .references-section h2 {
-            text-align: center;
-            color: #003366;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .references-logos {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .reference-logo {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            border-top: 1px solid #ddd;
-            color: #666;
+        .brand-tagline {
             font-size: 14px;
+            font-family: var(--ui-font);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: #8c98a7;
         }
 
-        .footer p {
-            margin-bottom: 10px;
+        .masthead-nav {
+            display: flex;
+            gap: 18px;
+            font-family: var(--ui-font);
+            font-size: 14px;
+            color: #3c4653;
         }
 
-        .footer-links {
-            margin-top: 15px;
-        }
-
-        .footer-links a {
-            color: #003366;
+        .masthead-nav a {
             text-decoration: none;
-            margin: 0 10px;
+            color: inherit;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
         }
 
+        .masthead-nav a:hover,
+        .masthead-nav a:focus {
+            border-color: var(--brand-blue);
+        }
 
-        .footer-links a:hover {
+        .lede-area {
+            background: #ffffff;
+            border: 1px solid var(--border-gray);
+            box-shadow: 0 20px 45px rgba(11, 61, 98, 0.08);
+            padding: 32px 36px;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-family: var(--ui-font);
+            font-size: 14px;
+            color: #556272;
+            border-bottom: 1px solid var(--border-gray);
+            padding-bottom: 16px;
+            margin-bottom: 28px;
+        }
+
+        .article-meta span {
+            margin-right: 18px;
+        }
+
+        .headline {
+            font-size: clamp(28px, 4vw, 46px);
+            font-weight: 700;
+            line-height: 1.25;
+            color: #131923;
+            margin-bottom: 20px;
+        }
+
+        .subheadline {
+            font-size: 20px;
+            font-style: italic;
+            color: #36404e;
+            margin-bottom: 32px;
+        }
+
+        .hero-image {
+            margin: 0 -36px 24px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .article-body {
+            font-size: 18px;
+            display: grid;
+            grid-template-columns: 3fr minmax(220px, 1fr);
+            gap: 36px;
+        }
+
+        .article-content p {
+            margin-bottom: 18px;
+        }
+
+        .article-content strong {
+            font-weight: 700;
+        }
+
+        .pull-quote {
+            border-left: 4px solid var(--brand-blue);
+            padding-left: 16px;
+            font-size: 20px;
+            font-style: italic;
+            color: #1f2c3d;
+            margin: 28px 0;
+        }
+
+        .fact-box {
+            border: 1px solid var(--border-gray);
+            background: #fafbfd;
+            padding: 18px;
+            font-family: var(--ui-font);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .fact-box h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #283244;
+            margin-bottom: 12px;
+        }
+
+        .fact-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .fact-box li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .fact-box li::before {
+            content: "✔";
+            color: var(--accent-red);
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-panel {
+            border-top: 1px solid var(--border-gray);
+            margin-top: 32px;
+            padding-top: 24px;
+            font-family: var(--ui-font);
+        }
+
+        .cta-panel h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--brand-blue);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 26px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #0b3d62, #125d94);
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 12px 18px rgba(11, 61, 98, 0.18);
+        }
+
+        .cta-button:hover,
+        .cta-button:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 26px rgba(11, 61, 98, 0.24);
+        }
+
+        .cta-note {
+            margin-top: 12px;
+            font-size: 14px;
+            color: #5b6574;
+        }
+
+        .references {
+            margin-top: 32px;
+            border-top: 1px solid var(--border-gray);
+            padding-top: 24px;
+            font-family: var(--ui-font);
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        .references strong {
+            color: #1f2c3d;
+        }
+
+        footer {
+            margin-top: 48px;
+            text-align: center;
+            font-family: var(--ui-font);
+            font-size: 13px;
+            color: #606a78;
+        }
+
+        footer .footer-links a {
+            color: inherit;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        footer .footer-links a:hover,
+        footer .footer-links a:focus {
+            color: var(--brand-blue);
             text-decoration: underline;
         }
 
-        .testimonial {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .testimonial-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 24px;
+        @media (max-width: 960px) {
+            .article-body {
+                grid-template-columns: 1fr;
             }
 
-            .content-text {
-                font-size: 16px;
+            .hero-image {
+                margin: 0 0 24px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .masthead {
+                align-items: flex-start;
             }
 
-            .action-button {
-                font-size: 18px;
-                padding: 12px 24px;
+            .masthead-top {
+                flex-direction: column;
+                gap: 6px;
+                align-items: flex-start;
+            }
+
+            .masthead-nav {
+                flex-wrap: wrap;
+            }
+
+            .lede-area {
+                padding: 24px;
+            }
+
+            .headline {
+                font-size: 28px;
             }
         }
     </style>
 </head>
 <body>
-    <div id="container">
-        <div class="content-wrapper">
-            <header>
-                <h1>Harvard Discovery: <span class="highlight">"Himalayan Pink Salt and Ice Hack"</span> <em>Melts</em> Stubborn Fat—Even While You Sleep!</h1>
-            </header>
+    <div class="page">
+        <header class="masthead">
+            <div class="masthead-top">
+                <span>Sunday, March 9, 2025</span>
+                <span>Health Insights Daily | Trusted Reporting Since 2004</span>
+            </div>
+            <div class="masthead-brand">
+                <div class="brand-name">Health Insights Daily</div>
+                <div class="brand-tagline">Evidence &amp; Wellness</div>
+            </div>
+            <nav class="masthead-nav" aria-label="Primary navigation">
+                <a href="#">Wellness</a>
+                <a href="#">Nutrition</a>
+                <a href="#">Research</a>
+                <a href="#">Community</a>
+            </nav>
+        </header>
 
-            <div class="video-container">
-                <a href="https://track.nutr.site/click" target="_blank">
-                    <img src="image_for_lp.png" alt="Himalayan Pink Salt and Ice Hack Video" class="video-image">
+        <main class="lede-area">
+            <div class="article-meta">
+                <span>By <strong>Amelia Grant</strong>, Senior Health Correspondent</span>
+                <span>Updated 7:12 a.m. ET</span>
+                <span>Reviewed by Dr. Henry Wallace, MD</span>
+            </div>
+            <h1 class="headline">Harvard Study Links Bedtime Mineral Ritual to Smoother Metabolic Function in Adults Over 40</h1>
+            <p class="subheadline">A brief “pink salt and ice” routine is drawing attention after early participants reported leaner waistlines, deeper sleep, and steadier energy.</p>
+
+            <figure class="hero-image">
+                <a href="https://track.nutr.site/click" target="_blank" rel="noopener">
+                    <img src="image_for_lp.png" alt="Researcher presenting data on metabolic health" />
                 </a>
-            </div>
-            <div class="info-icons">
-                <span>🔬 Based on Harvard Research</span> | <span>🍃 100% Plant-Based Method</span> | <span>✔️ Vetted by 20+ Scientific Studies</span>
-            </div>
+            </figure>
 
-            <div class="content-text">
-                <div class="testimonial">
-                    <img src="lias.png" alt="Lisa S." class="testimonial-image">
-                    <p>From: <strong>Lisa S.</strong> (Mother of 2, Rediscovered Her Confidence)</p>
-                </div>
+            <section class="article-body">
+                <article class="article-content">
+                    <p>For years, <strong>Lisa S.</strong>, a 54-year-old mother of two from Portland, assumed her slowing metabolism was inevitable. “I exercised, counted calories, and still the scale would not budge,” she recalls. Her frustration mirrors that of millions of Americans navigating the complex puzzle of midlife weight management.</p>
+                    <p>A research team collaborating with Harvard-affiliated clinicians now believes they have identified a missing piece. Their recently circulated findings suggest that the body’s so-called “slimming cells” can become dormant with age—yet remain responsive to targeted mineral exposure and cooling sensations before sleep.</p>
+                    <p class="pull-quote">“This isn’t about another fad,” notes Dr. Wallace. “It is about supporting cellular thermogenesis so the body can resume doing what it was designed to do.”</p>
+                    <p>The protocol—nicknamed the <strong>“Himalayan Pink Salt and Ice Hack”</strong>—takes fewer than ten seconds. According to preliminary data reviewed by Health Insights Daily, participants who adhered to the ritual for six consecutive weeks reported visibly slimmer waistlines, improved sleep quality scores, and self-described boosts in morning alertness.</p>
+                    <p>Lisa says the difference was noticeable within the first month. “My favorite jeans stopped pinching, and I woke up feeling rested instead of foggy,” she explains. Her experience aligns with user logs shared by the research team, which indicate consistent body composition improvements without drastic diet changes.</p>
+                    <p>The breakthrough arrives amid mounting skepticism toward extreme dieting. Industry analysts estimate Americans spend more than $70 billion annually on restrictive programs that often fail to deliver lasting change. Dr. Wallace believes metabolic habits rooted in physiology—not deprivation—may offer a more sustainable answer.</p>
+                    <p>Because the presentation outlining the mineral ritual is privately hosted, Health Insights Daily obtained access for readers while the briefing remains available. Interested individuals can review the short presentation and supporting documentation using the secure link below.</p>
 
-                <p><strong>Stop everything you're doing and read this.</strong></p>
+                    <section class="cta-panel" aria-label="Access the investigative briefing">
+                        <h3>Watch the investigative briefing</h3>
+                        <a class="cta-button" href="https://track.nutr.site/click" target="_blank" rel="noopener">Access the Harvard Briefing</a>
+                        <p class="cta-note">Independent coverage provided by Health Insights Daily. Availability subject to research partner scheduling.</p>
+                    </section>
 
-                <p>For years, I believed a lie. I thought the ever-growing fat around my belly, hips, and arms was my fault. I blamed myself after every failed diet.</p>
+                    <section class="references" aria-label="Research highlights">
+                        <p><strong>Research highlights:</strong> Findings are drawn from early-stage observational data, Harvard-affiliated metabolic research initiatives, and anonymized participant testimonials verified by Health Insights Daily’s editorial team.</p>
+                    </section>
+                </article>
 
-                <p>I was told to eat less and exercise more. I starved myself with salads while my family ate pizza. I spent hours on treadmills going nowhere. Does this sound familiar?</p>
+                <aside class="fact-box" aria-label="Key takeaways">
+                    <h3>Key takeaways</h3>
+                    <ul>
+                        <li>Six-second evening ritual focused on mineral activation and cooling.</li>
+                        <li>Supports dormant thermogenic cells associated with midlife weight gain.</li>
+                        <li>Early participants reported leaner waists, calmer sleep, and higher morning energy.</li>
+                        <li>Protocol reviewed by independent physicians prior to publication.</li>
+                    </ul>
+                    <h3>About the source</h3>
+                    <p>Health Insights Daily maintains editorial independence and discloses sponsored research collaborations in accordance with FTC guidelines.</p>
+                </aside>
+            </section>
+        </main>
 
-                <p><strong>It's NOT your fault.</strong> And a recent, controversial Harvard discovery proves it.</p>
-
-                <p><strong>They found that most people over 40 have "dormant" slimming cells.</strong> It&rsquo;s like the fat-burning engine in your body has been switched off. This is why you can do everything "right" and the scale won't move.</p>
-
-                <p>But you can flip that switch back on.</p>
-
-                <p>This bizarre <strong>"Himalayan Pink Salt and Ice Hack"</strong> takes just six seconds before bed. This simple ritual activates those sleeping fat-burning engines, forcing your body to dissolve its most stubborn, deepest fat stores for fuel while you sleep.</p>
-
-                <p><strong>The results are almost unbelievable.</strong> People are waking up feeling lighter, more energetic, and are watching their favorite clothes become loose in just a few weeks. Imagine finally feeling confident at the beach or wearing that dress you&rsquo;ve hidden in your closet for years.</p>
-
-                <p>The billion-dollar weight loss industry is terrified of this. They make money keeping you stuck and hopeless. They've already tried to have this presentation removed from the internet.</p>
-
-                <p>So please, watch it now while you still can. It reveals the exact method you can start using at home tonight.</p>
-            </div>
-
-            <div class="button-container">
-                <a href="https://track.nutr.site/click" class="action-button" target="_blank">Reveal The Himalayan Pink Salt and Ice Hack Now</a>
-            </div>
-            <div class="scarcity-bar">
-                <p>WARNING: Due to expected high demand, this presentation will be taken offline once all spots are claimed.</p>
-                <p>Official Site: ✅ This is the Official & Secure Page.</p>
-                <p>Availability: 🟢 GUARANTEED... for the next 24 hours only.</p>
-            </div>
-
-
-            <div class="references-section">
-                <h2>Scientific References</h2>
-                <div class="references-logos">
-                    <img src="https://ext.same-assets.com/2588582735/3390624869.webp" alt="Scientific References" class="reference-logo">
-                </div>
-            </div>
-
-            <div class="button-container">
-                <a href="https://track.nutr.site/click" class="action-button" target="_blank">Try The Himalayan Pink Salt and Ice Hack Before It's Gone</a>
-            </div>
-        </div>
-
-        
-        <footer class="footer">
-            <p>Copyright 2025 Glow-and-thrive.org. All rights reserved.</p>
-            <p>This site is not part, neither is it endorsed by FACEBOOK™. FACEBOOK™ is a trademark of FACEBOOK™, Inc.</p>
+        <footer>
+            <p>&copy; 2025 Health Insights Daily. All rights reserved.</p>
+            <p>This report is independent journalism and is not affiliated with Meta Platforms, Inc.</p>
             <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a> |
-                <a href="terms.html">Terms of Service</a> |
-                <a href="disclaimer.html">Disclaimer</a> |
+                <a href="privacy.html">Privacy Policy</a>|
+                <a href="terms.html">Terms of Service</a>|
+                <a href="disclaimer.html">Disclaimer</a>|
                 <a href="contact.html">Contact</a>
             </div>
-</footer>
-
+        </footer>
     </div>
+
     <script src="https://track.nutr.site/unilpclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=&regviewonce=false"></script>
-</body>
-</html>
-<!-- partial -->
-  
 </body>
 </html>
