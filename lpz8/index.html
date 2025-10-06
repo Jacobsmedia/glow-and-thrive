@@ -19,20 +19,13 @@
             }
 
             const attemptExternalOpen = () => {
-                let opened = false;
-
                 try {
                     const popup = window.open(window.location.href, "_blank", "noopener,noreferrer");
                     if (popup) {
                         popup.opener = null;
-                        opened = true;
                     }
                 } catch (error) {
-                    opened = false;
-                }
-
-                if (!opened) {
-                    document.documentElement.classList.add("show-open-browser-overlay");
+                    /* ignored */
                 }
             };
 
@@ -190,55 +183,6 @@
             display: grid;
             grid-template-columns: 3fr minmax(220px, 1fr);
             gap: 36px;
-        }
-
-        .in-app-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(11, 61, 98, 0.88);
-            color: #ffffff;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            text-align: center;
-            font-family: var(--ui-font);
-            z-index: 9999;
-        }
-
-        .in-app-overlay__panel {
-            max-width: 540px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            border-radius: 16px;
-            padding: 28px 32px;
-            backdrop-filter: blur(12px);
-        }
-
-        .in-app-overlay__title {
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: 0.04em;
-        }
-
-        .in-app-overlay__body {
-            font-size: 17px;
-            line-height: 1.6;
-        }
-
-        .in-app-overlay__steps {
-            text-align: left;
-            margin-top: 18px;
-            padding-left: 18px;
-        }
-
-        .in-app-overlay__steps li {
-            margin-bottom: 8px;
-        }
-
-        .show-open-browser-overlay .in-app-overlay {
-            display: flex;
         }
 
         .article-content p {
@@ -403,20 +347,6 @@
     </style>
 </head>
 <body>
-    <div class="in-app-overlay" role="dialog" aria-live="assertive" aria-modal="true">
-        <div class="in-app-overlay__panel">
-            <div class="in-app-overlay__title">Open in Your Browser</div>
-            <p class="in-app-overlay__body">
-                It looks like you opened this page from an in-app browser. To continue reading with
-                the best experience, please open it in your default browser.
-            </p>
-            <ol class="in-app-overlay__steps">
-                <li>Tap the menu (<strong>⋮</strong> or <strong>...</strong>) in the corner of this screen.</li>
-                <li>Choose <strong>“Open in Browser”</strong> or <strong>“Open in Safari/Chrome”</strong>.</li>
-                <li>Return to continue reading once the page opens in your main browser.</li>
-            </ol>
-        </div>
-    </div>
     <div class="page">
         <header class="masthead">
             <div class="masthead-top">
