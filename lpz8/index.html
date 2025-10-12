@@ -437,8 +437,8 @@
         }
       }
 
-      // Attach to all CTAs with .cta-button class
-      document.querySelectorAll('.cta-button').forEach(function(el) {
+      // Attach to all outbound tracked links
+      document.querySelectorAll('a[href*="track.nutr.site"]').forEach(function(el) {
         el.addEventListener('click', fireLpClick, { passive: true });
       });
     })();
