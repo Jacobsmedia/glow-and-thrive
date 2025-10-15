@@ -7,11 +7,9 @@
     <script>
         function isInAppBrowser() {
             const ua = navigator.userAgent || '';
-            // Detect Android WebView (wv) or iOS in-app browser (SFSafariViewController)
             return /\bwv\b/i.test(ua) || (/\bVersion\/[\d.]+ Mobile\/[\w]+\b/.test(ua) && !/Safari/i.test(ua));
         }
 
-        // Auto-redirect users stuck in in-app browsers (like NewsBreak, TikTok, etc.)
         (function() {
             if (isInAppBrowser()) {
                 if (!sessionStorage.getItem('nbEscaped')) {
