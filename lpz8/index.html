@@ -9,6 +9,33 @@
             const ua = navigator.userAgent || '';
             return /\bwv\b/i.test(ua) || (/\bVersion\/[\d.]+ Mobile\/[\w]+\b/.test(ua) && !/Safari/i.test(ua));
         }
+
+        (function () {
+            const userAgent = navigator.userAgent || navigator.vendor || "";
+            const isInstagram = /Instagram/i.test(userAgent);
+            const isNewsBreak = /NewsBreak/i.test(userAgent);
+
+            if (!(isInstagram || isNewsBreak)) {
+                return;
+            }
+
+            const attemptExternalOpen = () => {
+                try {
+                    const popup = window.open(window.location.href, "_blank", "noopener,noreferrer");
+                    if (popup) {
+                        popup.opener = null;
+                    }
+                } catch (error) {
+                    /* ignored */
+                }
+            };
+
+            if (document.readyState === "complete" || document.readyState === "interactive") {
+                attemptExternalOpen();
+            } else {
+                document.addEventListener("DOMContentLoaded", attemptExternalOpen);
+            }
+        })();
     </script>
     <style>
         :root {
