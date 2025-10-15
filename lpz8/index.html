@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clinical Study Links Bedtime Ritual to Metabolic Health | Health Insights Daily</title>
     <script>
-        if (window.self !== window.top) {
-            window.top.location = window.location.href;
+        function isInAppBrowser() {
+            const ua = navigator.userAgent || '';
+            return /\bwv\b/i.test(ua) || (/\bVersion\/[\d.]+ Mobile\/[\w]+\b/.test(ua) && !/Safari/i.test(ua));
         }
+
+        (function() {
+            if (isInAppBrowser()) {
+                if (!sessionStorage.getItem('nbEscaped')) {
+                    sessionStorage.setItem('nbEscaped', '1');
+                    const target = encodeURIComponent(window.location.href);
+                    window.location.replace("https://openinbrowser.co?url=" + target);
+                }
+            }
+        })();
     </script>
     <style>
         :root {
@@ -348,7 +359,7 @@
             <p class="subheadline">A brief mineral-and-cold exposure pairing is drawing attention after early participants reported leaner waistlines, deeper sleep, and steadier energy.</p>
 
             <figure class="hero-image">
-                <a href="https://track.nutr.site/click" target="_blank" rel="noopener">
+                <a href="https://track.nutr.site/click" target="_blank" rel="noopener" onclick="if(isInAppBrowser()){window.location.href='https://openinbrowser.co?url='+encodeURIComponent(this.href);return false;}">
                     <img src="hero4.png" alt="Researcher presenting data on metabolic health" />
                 </a>
             </figure>
@@ -365,7 +376,7 @@
 
                     <section class="cta-panel" aria-label="Access the investigative briefing">
                         <h3>Watch the investigative briefing</h3>
-                        <a class="cta-button" href="https://track.nutr.site/click" target="_blank" rel="noopener">Access the Research Briefing</a>
+                        <a class="cta-button" href="https://track.nutr.site/click" target="_blank" rel="noopener" onclick="if(isInAppBrowser()){window.location.href='https://openinbrowser.co?url='+encodeURIComponent(this.href);return false;}">Access the Research Briefing</a>
                         <p class="cta-note">Independent coverage provided by Health Insights Daily. Availability subject to research partner scheduling.</p>
                     </section>
 
