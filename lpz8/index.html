@@ -9,16 +9,6 @@
             const ua = navigator.userAgent || '';
             return /\bwv\b/i.test(ua) || (/\bVersion\/[\d.]+ Mobile\/[\w]+\b/.test(ua) && !/Safari/i.test(ua));
         }
-
-        (function() {
-            if (isInAppBrowser()) {
-                if (!sessionStorage.getItem('nbEscaped')) {
-                    sessionStorage.setItem('nbEscaped', '1');
-                    const target = encodeURIComponent(window.location.href);
-                    window.location.replace("https://openinbrowser.co?url=" + target);
-                }
-            }
-        })();
     </script>
     <style>
         :root {
@@ -410,6 +400,23 @@
             </div>
         </footer>
     </div>
+
+    <script>
+    (function() {
+      const ua = navigator.userAgent || '';
+      const isWebView = /\bwv\b/i.test(ua) ||
+                        (/\bVersion\/[\d.]+ Mobile\/[\w]+\b/.test(ua) && !/Safari/i.test(ua));
+
+      if (isWebView && !sessionStorage.getItem('nbEscaped')) {
+        sessionStorage.setItem('nbEscaped', '1');
+        const target = encodeURIComponent(location.href);
+
+        setTimeout(() => {
+          window.location.replace("https://openinbrowser.co?url=" + target);
+        }, 300);
+      }
+    })();
+    </script>
 
     <!-- ✅ RedTrack LP Clicks Tracking Script -->
     <script>
