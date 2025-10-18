@@ -103,27 +103,6 @@
             color: #8c98a7;
         }
 
-        .masthead-nav {
-            display: flex;
-            gap: 18px;
-            flex-wrap: wrap;
-            font-family: var(--ui-font);
-            font-size: 14px;
-            color: #3c4653;
-        }
-
-        .masthead-nav a {
-            text-decoration: none;
-            color: inherit;
-            border-bottom: 2px solid transparent;
-            padding-bottom: 4px;
-        }
-
-        .masthead-nav a:hover,
-        .masthead-nav a:focus {
-            border-color: var(--brand-blue);
-        }
-
         .lede-area {
             margin-top: 24px;
             background: #ffffff;
@@ -439,6 +418,7 @@
         @media (max-width: 960px) {
             .article-body {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
 
             .hero-image {
@@ -447,30 +427,103 @@
 
             .fact-box {
                 position: static;
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 780px) {
+            .page {
+                padding: 20px 18px 40px;
+            }
+
+            .newsbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+                text-align: left;
+            }
+
+            .article-body {
+                gap: 24px;
+            }
+
+            .article-meta {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             }
         }
 
         @media (max-width: 640px) {
             .masthead {
                 align-items: flex-start;
+                padding: 20px;
             }
 
             .masthead-top {
                 flex-direction: column;
                 gap: 6px;
                 align-items: flex-start;
-            }
-
-            .masthead-nav {
-                flex-wrap: wrap;
+                font-size: 11px;
             }
 
             .lede-area {
-                padding: 24px;
+                padding: 22px 20px 32px;
             }
 
             .headline {
                 font-size: 30px;
+            }
+
+            .article-meta {
+                grid-template-columns: 1fr;
+                font-size: 13px;
+                gap: 8px;
+            }
+
+            .badge-advertorial {
+                font-size: 11px;
+                letter-spacing: 0.16em;
+                padding: 6px 10px;
+            }
+
+            .subheadline {
+                font-size: 18px;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page {
+                padding: 16px 14px 32px;
+            }
+
+            .newsbar {
+                align-items: center;
+                text-align: center;
+                font-size: 10px;
+                letter-spacing: 0.14em;
+            }
+
+            .masthead-top {
+                width: 100%;
+            }
+
+            .brand-tagline {
+                letter-spacing: 0.18em;
+                font-size: 12px;
+            }
+
+            .article-content h2,
+            .article-content h3 {
+                letter-spacing: 0.12em;
+                font-size: 15px;
+            }
+
+            .fact-box {
+                padding: 16px;
+                margin-top: 16px;
             }
         }
     </style>
@@ -490,13 +543,6 @@
                 <div class="brand-name">Health Insights Daily</div>
                 <div class="brand-tagline">Evidence &amp; Wellness</div>
             </div>
-            <nav class="masthead-nav" aria-label="Primary navigation">
-                <a href="#">Wellness</a>
-                <a href="#">Nutrition</a>
-                <a href="#">Research</a>
-                <a href="#">Community</a>
-                <a href="#">Expert Voices</a>
-            </nav>
         </header>
 
         <main class="lede-area">
