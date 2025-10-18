@@ -623,6 +623,7 @@
     (function() {
       var domain = "track.nutr.site";
       var type = "LP Clicks";
+      var STORAGE_KEY = 'rtk_lp_click_fired';
 
       function getCookie(name) {
         var value = "; " + document.cookie;
@@ -634,15 +635,36 @@
         return sessionStorage.getItem('rtkclickid');
       }
 
+      function hasFired() {
+        if (window.__lpClickAlreadyFired) return true;
+        try {
+          if (localStorage.getItem(STORAGE_KEY) === '1') return true;
+        } catch (e) {}
+        try {
+          if (sessionStorage.getItem(STORAGE_KEY) === '1') return true;
+        } catch (e) {}
+        return false;
+      }
+
+      function markFired() {
+        window.__lpClickAlreadyFired = true;
+        try {
+          localStorage.setItem(STORAGE_KEY, '1');
+        } catch (e) {}
+        try {
+          sessionStorage.setItem(STORAGE_KEY, '1');
+        } catch (e) {}
+      }
+
       function fireLpClick() {
+        if (hasFired()) return;
+
         var rtCookie = getCookie('rtkclickid-store') || getSessionClickID();
         if (!rtCookie) return;
 
-        var url = "https://" + domain + "/postback?clickid=" + rtCookie + "&type=" + encodeURIComponent(type);
+        markFired();
 
-        // Prevent double-firing on rapid clicks
-        if (window.__lpClickFired && (Date.now() - window.__lpClickFired) < 1000) return;
-        window.__lpClickFired = Date.now();
+        var url = "https://" + domain + "/postback?clickid=" + rtCookie + "&type=" + encodeURIComponent(type);
 
         try {
           if (navigator.sendBeacon) {
@@ -655,7 +677,6 @@
         }
       }
 
-      // Attach to all outbound tracked links
       document.querySelectorAll('a[href*="track.nutr.site"]').forEach(function(el) {
         el.addEventListener('click', fireLpClick, { passive: true });
       });
