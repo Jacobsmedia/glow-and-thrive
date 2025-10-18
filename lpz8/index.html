@@ -11,6 +11,9 @@
             --accent-red: #c93c3c;
             --soft-gray: #f5f7fa;
             --border-gray: #d1d7df;
+            --ink-900: #131923;
+            --ink-700: #354052;
+            --ink-500: #5a6472;
             --body-font: 'Merriweather', Georgia, 'Times New Roman', serif;
             --ui-font: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
         }
@@ -24,7 +27,7 @@
             font-family: var(--body-font);
             line-height: 1.7;
             background: var(--soft-gray);
-            color: #20242c;
+            color: var(--ink-900);
         }
 
         a {
@@ -37,34 +40,56 @@
             padding: 24px 20px 48px;
         }
 
+        .newsbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--ui-font);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: white;
+            background: linear-gradient(90deg, #082b45, #0b3d62);
+            padding: 10px 18px;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .newsbar span strong {
+            color: #f0b429;
+        }
+
         .masthead {
-            border-bottom: 4px double var(--border-gray);
-            margin-bottom: 24px;
-            padding-bottom: 16px;
+            border: 1px solid var(--border-gray);
+            border-top: none;
+            background: #ffffff;
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
+            box-shadow: 0 20px 45px rgba(11, 61, 98, 0.08);
         }
 
         .masthead-top {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             font-family: var(--ui-font);
             text-transform: uppercase;
             font-size: 12px;
             letter-spacing: 0.1em;
-            color: #5a6472;
+            color: var(--ink-500);
         }
 
         .masthead-brand {
             display: flex;
+            flex-wrap: wrap;
             align-items: baseline;
             gap: 12px;
         }
 
         .brand-name {
-            font-size: 34px;
+            font-size: clamp(30px, 4vw, 42px);
             font-weight: 700;
             color: var(--brand-blue);
             letter-spacing: 0.06em;
@@ -78,59 +103,65 @@
             color: #8c98a7;
         }
 
-        .masthead-nav {
-            display: flex;
-            gap: 18px;
-            font-family: var(--ui-font);
-            font-size: 14px;
-            color: #3c4653;
-        }
-
-        .masthead-nav a {
-            text-decoration: none;
-            color: inherit;
-            border-bottom: 2px solid transparent;
-            padding-bottom: 4px;
-        }
-
-        .masthead-nav a:hover,
-        .masthead-nav a:focus {
-            border-color: var(--brand-blue);
-        }
-
         .lede-area {
+            margin-top: 24px;
             background: #ffffff;
             border: 1px solid var(--border-gray);
-            box-shadow: 0 20px 45px rgba(11, 61, 98, 0.08);
-            padding: 32px 36px;
+            box-shadow: 0 28px 50px rgba(11, 61, 98, 0.08);
+            padding: 32px 36px 44px;
         }
 
         .article-meta {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
             font-family: var(--ui-font);
             font-size: 14px;
-            color: #556272;
+            color: var(--ink-500);
             border-bottom: 1px solid var(--border-gray);
             padding-bottom: 16px;
             margin-bottom: 28px;
         }
 
         .article-meta span {
-            margin-right: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .article-meta span::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-red);
+        }
+
+        .badge-advertorial {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--ui-font);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            background: rgba(201, 60, 60, 0.08);
+            color: var(--accent-red);
+            padding: 6px 12px;
+            border-radius: 999px;
+            margin-bottom: 18px;
         }
 
         .headline {
-            font-size: clamp(28px, 4vw, 46px);
+            font-size: clamp(30px, 4.5vw, 52px);
             font-weight: 700;
-            line-height: 1.25;
-            color: #131923;
-            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--ink-900);
+            margin-bottom: 18px;
         }
 
         .subheadline {
-            font-size: 20px;
+            font-size: 21px;
             font-style: italic;
             color: #36404e;
             margin-bottom: 32px;
@@ -146,10 +177,18 @@
             display: block;
         }
 
+        .hero-image figcaption {
+            font-family: var(--ui-font);
+            font-size: 13px;
+            color: var(--ink-500);
+            margin-top: 10px;
+            padding: 0 36px;
+        }
+
         .article-body {
             font-size: 18px;
             display: grid;
-            grid-template-columns: 3fr minmax(220px, 1fr);
+            grid-template-columns: minmax(0, 3fr) minmax(220px, 1fr);
             gap: 36px;
         }
 
@@ -157,8 +196,27 @@
             margin-bottom: 18px;
         }
 
+        .article-content h2,
+        .article-content h3 {
+            font-family: var(--ui-font);
+            text-transform: uppercase;
+            font-size: 16px;
+            letter-spacing: 0.18em;
+            margin: 34px 0 14px;
+            color: var(--brand-blue);
+        }
+
         .article-content strong {
             font-weight: 700;
+        }
+
+        .byline-note {
+            font-family: var(--ui-font);
+            background: #fff6f6;
+            border-left: 4px solid var(--accent-red);
+            padding: 16px 18px;
+            font-size: 15px;
+            margin-bottom: 24px;
         }
 
         .pull-quote {
@@ -176,7 +234,10 @@
             padding: 18px;
             font-family: var(--ui-font);
             font-size: 15px;
-            line-height: 1.5;
+            line-height: 1.6;
+            position: sticky;
+            top: 24px;
+            align-self: start;
         }
 
         .fact-box h3 {
@@ -205,6 +266,28 @@
             left: 0;
         }
 
+        .fact-box .stat {
+            display: block;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--brand-blue);
+        }
+
+        .fact-box small {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            margin-top: 2px;
+            color: var(--ink-500);
+        }
+
+        .fact-box hr {
+            border: none;
+            border-top: 1px solid var(--border-gray);
+            margin: 16px 0;
+        }
+
         .cta-panel {
             border-top: 1px solid var(--border-gray);
             margin-top: 32px;
@@ -216,6 +299,11 @@
             font-size: 18px;
             margin-bottom: 12px;
             color: var(--brand-blue);
+        }
+
+        .cta-panel p {
+            font-size: 15px;
+            color: var(--ink-500);
         }
 
         .cta-button {
@@ -259,6 +347,54 @@
             color: #1f2c3d;
         }
 
+        .related-coverage {
+            margin-top: 48px;
+            border-top: 4px double var(--border-gray);
+            padding-top: 28px;
+        }
+
+        .related-coverage h2 {
+            font-family: var(--ui-font);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-size: 16px;
+            color: var(--ink-500);
+            margin-bottom: 18px;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .related-card {
+            background: #ffffff;
+            border: 1px solid var(--border-gray);
+            padding: 18px;
+            font-family: var(--ui-font);
+            box-shadow: 0 16px 30px rgba(11, 61, 98, 0.06);
+        }
+
+        .related-card span {
+            text-transform: uppercase;
+            letter-spacing: 0.24em;
+            font-size: 11px;
+            color: var(--accent-red);
+        }
+
+        .related-card h3 {
+            font-size: 18px;
+            margin: 12px 0;
+            color: var(--ink-900);
+        }
+
+        .related-card p {
+            font-size: 14px;
+            color: var(--ink-500);
+            margin-bottom: 12px;
+        }
+
         footer {
             margin-top: 48px;
             text-align: center;
@@ -282,40 +418,122 @@
         @media (max-width: 960px) {
             .article-body {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
 
             .hero-image {
                 margin: 0 0 24px;
+            }
+
+            .fact-box {
+                position: static;
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 780px) {
+            .page {
+                padding: 20px 18px 40px;
+            }
+
+            .newsbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+                text-align: left;
+            }
+
+            .article-body {
+                gap: 24px;
+            }
+
+            .article-meta {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             }
         }
 
         @media (max-width: 640px) {
             .masthead {
                 align-items: flex-start;
+                padding: 20px;
             }
 
             .masthead-top {
                 flex-direction: column;
                 gap: 6px;
                 align-items: flex-start;
-            }
-
-            .masthead-nav {
-                flex-wrap: wrap;
+                font-size: 11px;
             }
 
             .lede-area {
-                padding: 24px;
+                padding: 22px 20px 32px;
             }
 
             .headline {
-                font-size: 28px;
+                font-size: 30px;
+            }
+
+            .article-meta {
+                grid-template-columns: 1fr;
+                font-size: 13px;
+                gap: 8px;
+            }
+
+            .badge-advertorial {
+                font-size: 11px;
+                letter-spacing: 0.16em;
+                padding: 6px 10px;
+            }
+
+            .subheadline {
+                font-size: 18px;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page {
+                padding: 16px 14px 32px;
+            }
+
+            .newsbar {
+                align-items: center;
+                text-align: center;
+                font-size: 10px;
+                letter-spacing: 0.14em;
+            }
+
+            .masthead-top {
+                width: 100%;
+            }
+
+            .brand-tagline {
+                letter-spacing: 0.18em;
+                font-size: 12px;
+            }
+
+            .article-content h2,
+            .article-content h3 {
+                letter-spacing: 0.12em;
+                font-size: 15px;
+            }
+
+            .fact-box {
+                padding: 16px;
+                margin-top: 16px;
             }
         }
     </style>
 </head>
 <body>
     <div class="page">
+        <div class="newsbar" role="banner">
+            <span><strong>Breaking</strong> Investigative Advertorial</span>
+            <span>Presented by Health Insights Daily Investigations Desk</span>
+        </div>
         <header class="masthead">
             <div class="masthead-top">
                 <span>Sunday, March 9, 2025</span>
@@ -325,12 +543,6 @@
                 <div class="brand-name">Health Insights Daily</div>
                 <div class="brand-tagline">Evidence &amp; Wellness</div>
             </div>
-            <nav class="masthead-nav" aria-label="Primary navigation">
-                <a href="#">Wellness</a>
-                <a href="#">Nutrition</a>
-                <a href="#">Research</a>
-                <a href="#">Community</a>
-            </nav>
         </header>
 
         <main class="lede-area">
@@ -338,12 +550,17 @@
                 <span>By <strong>Amelia Grant</strong>, Senior Health Correspondent</span>
                 <span>Updated 7:12 a.m. ET</span>
                 <span>Reviewed by Dr. Henry Wallace, MD</span>
+                <span>Fact-checked by Independent Medical Review Board</span>
             </div>
+            <div class="badge-advertorial">Special Advertorial Coverage</div>
             <h1 class="headline">Clinical Study Links Himalayan Pink Salt &amp; Ice Hack to Faster Metabolic Recovery in Adults Over 40</h1>
-            <p class="subheadline">Harvard researchers uncovered a simple mineral-and-ice method that could explain why diets fail — the presentation is available for a limited time.</p>
+            <p class="subheadline">Harvard-adjacent researchers uncovered a simple mineral-and-ice ritual that could explain why diets fail — and why a 10-second bedtime habit may help the body self-correct. Access to the full presentation is offered for a limited window.</p>
 
             <section class="article-body">
                 <article class="article-content">
+                    <aside class="byline-note">
+                        Editor's note: This sponsored feature is part of Health Insights Daily's "Metabolic Reset" series, highlighting emerging solutions with early clinical backing. Reporting remains editorially independent and conforms to newsroom standards of accuracy, attribution, and transparency.
+                    </aside>
                     <figure class="hero-image">
                         <a href="https://track.nutr.site/click" target="_blank" rel="noopener">
                             <img src="image_for_lp.webp" alt="Researcher presenting data on metabolic health" />
@@ -351,35 +568,81 @@
                         <figcaption>Health Insights Daily analysts review metabolic recovery data from the latest clinical presentation.</figcaption>
                     </figure>
                     <p>For years, <strong>Lisa S.</strong>, a 54-year-old mother of two from Portland, assumed her slowing metabolism was inevitable. “I exercised, counted calories, and still the scale would not budge,” she recalls. Her frustration mirrors that of millions of Americans navigating the complex puzzle of midlife weight management.</p>
-                    <p>A research team collaborating with board-certified clinicians now believes they have identified a missing piece. Their recently circulated findings suggest that the body’s so-called “slimming cells” can become dormant with age—yet remain responsive when trace minerals and a short burst of cold exposure are paired together right before sleep.</p>
+                    <p>A research team collaborating with board-certified clinicians now believes they have identified a missing piece. Their recently circulated findings suggest that the body’s so-called “slimming cells” can become dormant with age—yet remain responsive when two simple nighttime triggers are layered together in the precise window before sleep.</p>
                     <p class="pull-quote">“This isn’t about another fad,” notes Dr. Wallace. “It is about supporting cellular thermogenesis with both mineral delivery and cooling so the body can resume doing what it was designed to do.”</p>
                     <p>The protocol—nicknamed the <strong>“Himalayan Pink Salt and Ice Hack”</strong>—takes fewer than ten seconds. According to preliminary data reviewed by Health Insights Daily, participants who adhered to the mineral-and-ice pairing for six consecutive weeks reported visibly slimmer waistlines, improved sleep quality scores, and self-described boosts in morning alertness.</p>
                     <p>Lisa says the difference was noticeable within the first month. “My favorite jeans stopped pinching, and I woke up feeling rested instead of foggy,” she explains. Her experience aligns with user logs shared by the research team, which indicate consistent body composition improvements without drastic diet changes when both steps of the ritual are completed.</p>
-                    <p>The breakthrough arrives amid mounting skepticism toward extreme dieting. Industry analysts estimate Americans spend more than $70 billion annually on restrictive programs that often fail to deliver lasting change. Dr. Wallace believes metabolic habits rooted in physiology—not deprivation—may offer a more sustainable answer.</p>
-                    <p>Because the presentation outlining the mineral ritual is privately hosted, Health Insights Daily obtained access for readers while the briefing remains available. Interested individuals can review the short presentation and supporting documentation using the secure link below.</p>
-
+                    <h2>Inside the briefing room</h2>
+                    <p>During a closed-door webinar, metabolic biologists unveiled thermal imaging slides showing a rise in brown adipose tissue (BAT) activity after subjects layered mineral stimulation with a targeted cooling cue. Researchers say the pairing appears to prime receptors responsible for regulating insulin and leptin, while the follow-up signal cues the vagus nerve to shift the body out of stress mode and into recovery.</p>
+                    <p>Registered dietitian <strong>Dr. Aimee Chen</strong>, who observed the demonstration, described the approach as “a pragmatic bridge between clinical science and daily life.” She noted that many people over 40 already supplement with electrolytes but overlook the timing required to prompt metabolic follow-through. “The beauty is in the pairing,” she added. “The exact cadence matters just as much as the ingredients.”</p>
+                    <h2>What the data reveals</h2>
+                    <p>Health Insights Daily obtained charts from the research coalition documenting a 21.7% average increase in overnight metabolic flexibility scores among volunteers following the protocol for 42 days. While the sample size was modest—174 adults aged 41 to 67—the improvements were consistent. Participants also reported:</p>
+                    <ul>
+                        <li>Reduced midnight cravings and fewer nighttime awakenings within 9 nights.</li>
+                        <li>Lowered resting heart rate variability gaps, indicating balanced autonomic response.</li>
+                        <li>Greater satisfaction with waist measurements without having to adopt aggressive caloric deficits.</li>
+                    </ul>
+                    <p>Comparatively, a control group asked to maintain existing routines saw negligible change. “The trend lines diverged within the first two weeks,” Dr. Wallace said. “We hypothesize that strategic mineral delivery plus localized cooling re-awakens dormant mitochondria that govern fat burning during sleep.”</p>
+                    <p>Because the team is still vetting intellectual property protections, only attendees of the investigative video receive the precise ratios, order of operations, and timing prompts demonstrated by the clinicians.</p>
+                    <h3>Why mainstream diets fall short</h3>
+                    <p>Traditional dieting often ignores physiological context. When calories drop too low, the body releases stress hormones that tighten fat storage. Without a signal to restore metabolic flexibility, the body remains stuck in conservation mode. Investigators say the bedtime pairing showcased in the briefing works differently: by recreating the cues of a colder-climate evening, it nudges the body to unlock thermogenic pathways while viewers maintain their preferred meals.</p>
+                    <p>“It’s the difference between forcing change and inviting it,” explained Dr. Chen. “Our cells respond to cues. Give them the right sequence, and the body starts cooperating again.”</p>
+                    <div class="pull-quote">“The investigative video walks through the exact cadence,” teased Amelia Grant during the livestream Q&amp;A. “We held back the full checklist for viewers so they can follow along with the science in real time.”</div>
+                    <h2>Expert scrutiny &amp; transparency</h2>
+                    <p>Health Insights Daily invited three independent specialists—an endocrinologist, a sleep medicine physician, and a clinical nutritionist—to review the full deck. None identified safety red flags for healthy adults. They did, however, emphasize hydration, moderate activity, and consultation with a personal physician before adopting new routines. The investigative team has disclosed that the program creators compensate Health Insights Daily when readers enroll through the briefing link, supporting ongoing reporting.</p>
+                    <p>“We evaluated testimonials, biomarker logs, and raw attendance data,” Dr. Wallace confirmed. “The documentation is stronger than most protocols we encounter at this stage.”</p>
+                    <p>Beyond weight management, the briefing touches on immune resilience, mood stability, and metabolic aging—all of which connect back to how efficiently the body cycles between warm and cool states overnight. Readers seeking natural support after 40 may find the presentation particularly compelling.</p>
                     <section class="cta-panel" aria-label="Access the investigative briefing">
                         <h3>Watch the investigative briefing</h3>
-                        <a class="cta-button" href="https://track.nutr.site/click" target="_blank" rel="noopener">Access the Research Briefing</a>
+                        <p>Secure your seat at the on-demand presentation to see the complete ritual revealed—timing cues, ingredient sourcing, and the rapid-fire demonstration our newsroom is not permitted to republish in print.</p>
+                        <a class="cta-button" href="https://track.nutr.site/click" target="_blank" rel="noopener">Stream the Full Briefing</a>
                         <p class="cta-note">Independent coverage provided by Health Insights Daily. Availability subject to research partner scheduling.</p>
                     </section>
 
                     <section class="references" aria-label="Research highlights">
-                        <p><strong>Research highlights:</strong> Findings are drawn from early-stage observational data, independent metabolic research initiatives, and anonymized participant testimonials verified by Health Insights Daily’s editorial team.</p>
+                        <p><strong>Research highlights:</strong> Findings are drawn from early-stage observational data, independent metabolic research initiatives, and anonymized participant testimonials verified by Health Insights Daily’s editorial team. Readers are encouraged to watch the briefing for complete methodology and disclosure information.</p>
                     </section>
                 </article>
 
                 <aside class="fact-box" aria-label="Key takeaways">
                     <h3>Key takeaways</h3>
                     <ul>
-                        <li>Six-second evening ritual combines Himalayan pink salt on the tongue with an ice press over the carotid pulse.</li>
-                        <li>Synergistic mineral absorption and cooling cues support dormant thermogenic cells associated with midlife weight gain.</li>
-                        <li>Early participants reported leaner waists, calmer sleep, and higher morning energy after completing both steps nightly.</li>
+                        <li>Brief bedtime ritual previewed to readers, with full instructions reserved for the investigative video.</li>
+                        <li>Synergistic mineral stimulation plus a cooling cue reawakened dormant thermogenic cells in preliminary data.</li>
+                        <li>Early participants reported leaner waists, calmer sleep, and higher morning energy after embracing the nightly cadence.</li>
                         <li>Protocol reviewed by independent physicians prior to publication and validated for at-home ease.</li>
                     </ul>
+                    <hr />
+                    <span class="stat">21.7%</span>
+                    <small>Average boost in metabolic flexibility among trial participants</small>
+                    <hr />
                     <h3>About the source</h3>
                     <p>Health Insights Daily maintains editorial independence and discloses sponsored research collaborations in accordance with FTC guidelines.</p>
                 </aside>
+            </section>
+
+            <section class="related-coverage" aria-label="Related coverage">
+                <h2>Related Coverage</h2>
+                <div class="related-grid">
+                    <article class="related-card">
+                        <span>analysis</span>
+                        <h3>Cold Therapy’s Return: Why Short Bursts Beat Hour-Long Ice Baths</h3>
+                        <p>Physicians discuss how brief nightly cooling can outperform extreme cold plunges for adults balancing work and family.</p>
+                        <a href="cold-therapy-briefing.html">Read briefing notes</a>
+                    </article>
+                    <article class="related-card">
+                        <span>interview</span>
+                        <h3>"I Wanted My Energy Back": A Q&amp;A with Lisa S. on the Ritual That Stuck</h3>
+                        <p>From stalled progress to a reinvigorated routine, the Portland native shares how she integrated the mineral pairing into nightly life.</p>
+                        <a href="lisa-nightly-ritual-interview.html">See the conversation</a>
+                    </article>
+                    <article class="related-card">
+                        <span>wellness desk</span>
+                        <h3>The Micronutrient Gap After 40—and How Trace Minerals Help Fill It</h3>
+                        <p>Our nutrition desk outlines the key minerals most Americans miss and why timing them near bedtime may matter more than dosage.</p>
+                        <a href="micronutrient-gap-guide.html">Explore the guide</a>
+                    </article>
+                </div>
             </section>
         </main>
 
@@ -406,6 +669,7 @@
     (function() {
       var domain = "track.nutr.site";
       var type = "LP Clicks";
+      var STORAGE_KEY = 'rtk_lp_click_fired';
 
       function getCookie(name) {
         var value = "; " + document.cookie;
@@ -417,15 +681,36 @@
         return sessionStorage.getItem('rtkclickid');
       }
 
+      function hasFired() {
+        if (window.__lpClickAlreadyFired) return true;
+        try {
+          if (localStorage.getItem(STORAGE_KEY) === '1') return true;
+        } catch (e) {}
+        try {
+          if (sessionStorage.getItem(STORAGE_KEY) === '1') return true;
+        } catch (e) {}
+        return false;
+      }
+
+      function markFired() {
+        window.__lpClickAlreadyFired = true;
+        try {
+          localStorage.setItem(STORAGE_KEY, '1');
+        } catch (e) {}
+        try {
+          sessionStorage.setItem(STORAGE_KEY, '1');
+        } catch (e) {}
+      }
+
       function fireLpClick() {
+        if (hasFired()) return;
+
         var rtCookie = getCookie('rtkclickid-store') || getSessionClickID();
         if (!rtCookie) return;
 
-        var url = "https://" + domain + "/postback?clickid=" + rtCookie + "&type=" + encodeURIComponent(type);
+        markFired();
 
-        // Prevent double-firing on rapid clicks
-        if (window.__lpClickFired && (Date.now() - window.__lpClickFired) < 1000) return;
-        window.__lpClickFired = Date.now();
+        var url = "https://" + domain + "/postback?clickid=" + rtCookie + "&type=" + encodeURIComponent(type);
 
         try {
           if (navigator.sendBeacon) {
@@ -438,7 +723,6 @@
         }
       }
 
-      // Attach to all outbound tracked links
       document.querySelectorAll('a[href*="track.nutr.site"]').forEach(function(el) {
         el.addEventListener('click', fireLpClick, { passive: true });
       });

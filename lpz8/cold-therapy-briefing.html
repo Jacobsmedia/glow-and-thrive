@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cold Therapy’s Return | Health Insights Daily</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --brand-blue: #0b3d62;
+            --accent-red: #c93c3c;
+            --soft-gray: #f5f7fa;
+            --border-gray: #d1d7df;
+            --ink-900: #131923;
+            --ink-700: #354052;
+            --ink-500: #5a6472;
+            --body-font: 'Merriweather', Georgia, 'Times New Roman', serif;
+            --ui-font: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--body-font);
+            line-height: 1.7;
+            background: var(--soft-gray);
+            color: var(--ink-900);
+        }
+
+        a {
+            color: var(--brand-blue);
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        .newsbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--ui-font);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: white;
+            background: linear-gradient(90deg, #082b45, #0b3d62);
+            padding: 10px 16px;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .newsbar strong {
+            color: #f0b429;
+        }
+
+        .masthead {
+            background: #fff;
+            border: 1px solid var(--border-gray);
+            border-top: none;
+            padding: 24px;
+            box-shadow: 0 18px 40px rgba(11, 61, 98, 0.08);
+        }
+
+        .masthead h1 {
+            margin: 0;
+            font-size: clamp(32px, 4vw, 40px);
+            letter-spacing: 0.05em;
+            color: var(--brand-blue);
+        }
+
+        .masthead p {
+            margin: 8px 0 0;
+            font-family: var(--ui-font);
+            text-transform: uppercase;
+            letter-spacing: 0.28em;
+            color: var(--ink-500);
+            font-size: 12px;
+        }
+
+        .article {
+            margin-top: 28px;
+            background: #fff;
+            border: 1px solid var(--border-gray);
+            padding: 36px;
+            box-shadow: 0 24px 48px rgba(11, 61, 98, 0.08);
+        }
+
+        .article h2 {
+            font-size: 26px;
+            margin-top: 0;
+        }
+
+        .article h3 {
+            font-size: 20px;
+            margin-top: 32px;
+        }
+
+        .deck {
+            font-family: var(--ui-font);
+            font-size: 15px;
+            color: var(--ink-700);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            margin-bottom: 18px;
+        }
+
+        .cta-panel {
+            border-top: 1px solid var(--border-gray);
+            margin-top: 36px;
+            padding-top: 28px;
+            text-align: center;
+        }
+
+        .cta-panel h3 {
+            font-family: var(--ui-font);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-500);
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 16px;
+            background: var(--accent-red);
+            color: #fff;
+            padding: 14px 32px;
+            text-decoration: none;
+            font-family: var(--ui-font);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+
+        .cta-note {
+            font-family: var(--ui-font);
+            font-size: 13px;
+            color: var(--ink-500);
+            margin-top: 12px;
+        }
+
+        footer {
+            margin-top: 48px;
+            text-align: center;
+            font-family: var(--ui-font);
+            font-size: 13px;
+            color: var(--ink-500);
+        }
+
+        .breadcrumb {
+            margin-top: 18px;
+            font-family: var(--ui-font);
+            font-size: 13px;
+            color: var(--ink-500);
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .breadcrumb span {
+            margin: 0 6px;
+        }
+
+        @media (max-width: 780px) {
+            .page {
+                padding: 20px 18px 48px;
+            }
+
+            .newsbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+                text-align: left;
+            }
+
+            .masthead {
+                padding: 24px 22px;
+            }
+
+            .article {
+                padding: 30px 26px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .page {
+                padding: 16px 14px 40px;
+            }
+
+            .newsbar {
+                align-items: center;
+                text-align: center;
+                font-size: 10px;
+                letter-spacing: 0.14em;
+            }
+
+            .masthead {
+                text-align: left;
+            }
+
+            .masthead p {
+                letter-spacing: 0.2em;
+                font-size: 11px;
+            }
+
+            .article {
+                padding: 26px 20px;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="newsbar">
+            <span><strong>Health Insights Daily</strong> Analysis Desk</span>
+            <span>Metabolic Health Watch</span>
+        </div>
+        <header class="masthead">
+            <div class="breadcrumb"><a href="index.html">Latest Coverage</a><span>/</span>Analysis</div>
+            <h1>Cold Therapy’s Return: Why Short Bursts Beat Hour-Long Ice Baths</h1>
+            <p>Chronobiology • Circulation • Recovery</p>
+        </header>
+        <article class="article">
+            <p class="deck">Investigators say replicating a crisp alpine cue before bed can unlock calmer sleep and next-morning energy.</p>
+            <p>Peak-performance culture pushed many adults into punishing cold plunges and elaborate cryotherapy appointments. Yet, in interviews with Health Insights Daily, vascular physiologists argue that shorter, nightly temperature drops are the overlooked lever for sustainable metabolic balance. By introducing a gentle cooling cue at home, they say participants stimulate the same thermogenic pathways without the stress spike that long immersions can trigger.</p>
+            <h2>Nightly cues trump marathon plunges</h2>
+            <p>Dr. Elise Harmon of the Pacific Metabolic Institute told our desk that “it’s about rhythm, not shock.” Her team compared data from consumers who attempted hour-long ice baths with those who followed the bedtime cadence previewed in our investigative briefing. The latter group recorded steadier heart-rate variability and fewer cortisol surges, signaling that the body accepted the cooler signal without defensive tightening.</p>
+            <p>“We’re recreating twilight in the mountains—temperature, mineral support, and timing,” Harmon said. “The presentation walks through how the cues stack together so the body treats the ritual as recovery, not punishment.”</p>
+            <h3>The missing piece lives inside the video</h3>
+            <p>Readers repeatedly asked our newsroom for the precise ratios and timing windows the analysts referenced. Because the method’s creators are still finalizing intellectual-property protections, we can only describe the science publicly. The investigative video retains the exact order of operations, ingredient pairings, and minute markers the clinicians rely on to trigger thermogenic release.</p>
+            <p>Our reporting team sat in on the full demonstration. What stood out was how effortlessly participants wove the steps into routines they were already doing—warming herbal tea, setting a bedroom fan, applying mineral support. Taken together, the adjustments formed a micro-ritual that unlocked the desired temperature drop within minutes.</p>
+            <div class="cta-panel">
+                <h3>Access the complete cadence</h3>
+                <p>Stream the on-demand briefing to see the exact nightly sequence demonstrated by the researchers, including ingredient sourcing tips and minute-by-minute timing.</p>
+                <a class="cta-button" href="https://track.nutr.site/click" target="_blank" rel="noopener">Watch the investigative video</a>
+                <p class="cta-note">Presentation availability is limited by the research partner. Independent coverage provided by Health Insights Daily.</p>
+            </div>
+        </article>
+        <footer>
+            &copy; 2025 Health Insights Daily • <a href="index.html">Return to main story</a>
+        </footer>
+    </div>
+
+    <script>
+        if (window.self !== window.top) {
+            window.top.location = window.location.href;
+        }
+    </script>
+
+    <!-- ✅ RedTrack LP Clicks Tracking Script -->
+    <script>
+    (function() {
+      var domain = "track.nutr.site";
+      var type = "LP Clicks";
+      var STORAGE_KEY = 'rtk_lp_click_fired';
+
+      function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+      }
+
+      function getSessionClickID() {
+        return sessionStorage.getItem('rtkclickid');
+      }
+
+      function hasFired() {
+        if (window.__lpClickAlreadyFired) return true;
+        try {
+          if (localStorage.getItem(STORAGE_KEY) === '1') return true;
+        } catch (e) {}
+        try {
+          if (sessionStorage.getItem(STORAGE_KEY) === '1') return true;
+        } catch (e) {}
+        return false;
+      }
+
+      function markFired() {
+        window.__lpClickAlreadyFired = true;
+        try {
+          localStorage.setItem(STORAGE_KEY, '1');
+        } catch (e) {}
+        try {
+          sessionStorage.setItem(STORAGE_KEY, '1');
+        } catch (e) {}
+      }
+
+      function fireLpClick() {
+        if (hasFired()) return;
+
+        var rtCookie = getCookie('rtkclickid-store') || getSessionClickID();
+        if (!rtCookie) return;
+
+        markFired();
+
+        var url = "https://" + domain + "/postback?clickid=" + rtCookie + "&type=" + encodeURIComponent(type);
+
+        try {
+          if (navigator.sendBeacon) {
+            navigator.sendBeacon(url);
+          } else {
+            (new Image()).src = url + "&_ts=" + Date.now();
+          }
+        } catch (e) {
+          console.warn("LP Click tracking failed:", e);
+        }
+      }
+
+      document.querySelectorAll('a[href*="track.nutr.site"]').forEach(function(el) {
+        el.addEventListener('click', fireLpClick, { passive: true });
+      });
+    })();
+    </script>
+    <script src="https://track.nutr.site/unilpclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=&regviewonce=false"></script>
+</body>
+</html>
