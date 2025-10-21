@@ -44,38 +44,16 @@
 
     header {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 18px;
+      align-items: center;
+      gap: 14px;
       margin-bottom: 32px;
       text-align: left;
     }
 
-    header .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    header .logo svg {
-      width: clamp(72px, 16vw, 96px);
+    header img {
+      width: 160px;
+      max-width: 45vw;
       height: auto;
-      flex-shrink: 0;
-    }
-
-    header .logo-text {
-      display: flex;
-      flex-direction: column;
-      font-size: clamp(18px, 4vw, 26px);
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      line-height: 1.05;
-      color: var(--text-dark);
-    }
-
-    header .logo-text span + span {
-      margin-top: 4px;
     }
 
     header .brand-meta {
@@ -85,7 +63,6 @@
       color: var(--text-mid);
       font-weight: 600;
     }
-
 
     .quiz-card {
       width: 100%;
@@ -204,67 +181,64 @@
 
     .answers {
       display: grid;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 14px;
+      margin-bottom: 24px;
     }
 
     .answer {
-      position: relative;
       border: 1.5px solid var(--border);
-      border-radius: 18px;
-      padding: 18px 22px;
+      border-radius: 16px;
+      padding: 18px 20px;
       font-size: 17px;
       font-weight: 600;
       color: var(--text-mid);
       background: #f8fcfb;
       cursor: pointer;
-      transition: border 220ms ease, box-shadow 220ms ease, background 220ms ease, transform 220ms ease;
+      transition: border 200ms ease, box-shadow 200ms ease, background 200ms ease;
       display: flex;
       align-items: center;
-      gap: 14px;
-    }
-
-    .answer::after {
-      content: "";
-      position: absolute;
-      right: 18px;
-      top: 50%;
-      width: 10px;
-      height: 10px;
-      border-right: 2px solid var(--accent);
-      border-bottom: 2px solid var(--accent);
-      transform: translateY(-50%) rotate(-45deg);
-      opacity: 0;
-      transition: opacity 200ms ease;
+      gap: 12px;
     }
 
     .answer input {
       accent-color: var(--accent);
-      transform: scale(1.15);
+      transform: scale(1.2);
     }
 
     .answer:hover {
       border-color: var(--accent);
       box-shadow: 0 18px 40px rgba(42, 161, 152, 0.18);
       background: #ffffff;
-      transform: translateY(-2px);
-    }
-
-    .answer:focus-within {
-      border-color: var(--accent);
-      box-shadow: 0 18px 40px rgba(42, 161, 152, 0.2);
-      background: #ffffff;
     }
 
     .answer.selected {
       border-color: var(--accent);
-      background: rgba(42, 161, 152, 0.1);
+      background: rgba(42, 161, 152, 0.08);
       color: var(--text-dark);
-      box-shadow: 0 22px 44px rgba(42, 161, 152, 0.18);
     }
 
-    .answer.selected::after {
-      opacity: 1;
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .back-button {
+      background: transparent;
+      border: none;
+      color: var(--text-mid);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 200ms ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent-dark);
     }
 
     .results {
@@ -275,41 +249,6 @@
       font-size: 18px;
       color: var(--text-mid);
       margin-bottom: 24px;
-    }
-
-    .intro-illustration {
-      display: block;
-      width: clamp(200px, 48vw, 280px);
-      margin: 0 auto 24px;
-      border-radius: 24px;
-      box-shadow: 0 24px 48px rgba(30, 74, 76, 0.16);
-    }
-
-    .cta-image {
-      display: block;
-      margin: 24px auto 32px;
-      max-width: clamp(220px, 60vw, 360px);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 28px 56px rgba(30, 74, 76, 0.18);
-      transition: transform 220ms ease, box-shadow 220ms ease;
-    }
-
-    .cta-image img {
-      width: 100%;
-      display: block;
-      height: auto;
-    }
-
-    .cta-image:hover,
-    .cta-image:focus {
-      transform: translateY(-4px);
-      box-shadow: 0 34px 64px rgba(30, 74, 76, 0.24);
-    }
-
-    .cta-image:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 6px;
     }
 
     .expert {
@@ -389,23 +328,9 @@
     }
 
     @media (max-width: 640px) {
-      .page {
-        padding: 24px 14px 60px;
-      }
-
       .quiz-card {
         border-radius: 20px;
-        padding: 28px 18px 32px;
-      }
-
-      header {
-        align-items: center;
-        text-align: center;
-      }
-
-      header .logo {
-        flex-direction: column;
-        text-align: center;
+        padding: 32px 20px 36px;
       }
 
       .expert {
@@ -416,71 +341,13 @@
       .expert img {
         margin: 0 auto;
       }
-
-      .answers {
-        gap: 12px;
-        margin-bottom: 16px;
-      }
-
-      .answer {
-        font-size: 16px;
-        padding: 16px 18px;
-      }
-
-      h1,
-      .question-title {
-        font-size: clamp(24px, 7vw, 32px);
-      }
-
-      .subheadline,
-      .body-copy {
-        font-size: clamp(16px, 4vw, 19px);
-      }
     }
   </style>
 </head>
 <body>
   <div class="page">
     <header>
-      <div class="logo" role="img" aria-label="Healthy Science Daily">
-        <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="dnaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#4cc9a3" />
-              <stop offset="100%" stop-color="#1f7f76" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M38 20c24 20 24 48 0 68s-24 48 0 68"
-            fill="none"
-            stroke="url(#dnaGradient)"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            d="M82 20c-24 20-24 48 0 68s24 48 0 68"
-            fill="none"
-            stroke="url(#dnaGradient)"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path d="M44 52h32m-32 32h32m-32 32h32m-32 32h32" stroke="#1b5f5b" stroke-width="8" stroke-linecap="round" />
-          <path
-            d="M60 24c15-7 27-23 29-41-21 4-33 17-29 41z"
-            fill="url(#dnaGradient)"
-          />
-          <path
-            d="M60 24c-15-7-27-23-29-41 21 4 33 17 29 41z"
-            fill="url(#dnaGradient)"
-          />
-          <circle cx="60" cy="176" r="10" fill="#1f7f76" />
-        </svg>
-        <div class="logo-text" aria-hidden="true">
-          <span>Healthy</span>
-          <span>Science</span>
-          <span>Daily</span>
-        </div>
-      </div>
+      <img src="https://yourdomain.com/assets/logo.png" alt="Health Science Daily logo" loading="lazy" />
       <div class="brand-meta">Harvard-Backed Digestive Insights</div>
     </header>
 
@@ -495,12 +362,6 @@
         <h1>Do You Qualify to Watch the Harvard-Backed Gut Health Video?</h1>
         <p class="subheadline">Answer a few quick questions to see if your symptoms match those helped by this simple 8-second morning ritual.</p>
         <p class="body-copy">This short quiz helps determine if your digestive type qualifies for early access to the breakthrough Harvard-backed gut health video presentation.</p>
-        <img
-          class="intro-illustration"
-          src="doctor.png"
-          alt="Dr. Scott reviewing digestive health notes"
-          loading="lazy"
-        />
         <button class="button-primary" data-next>
           Start Quiz →
         </button>
@@ -515,6 +376,10 @@
           <label class="answer"><input type="radio" name="q1" value="Occasionally" />Occasionally</label>
           <label class="answer"><input type="radio" name="q1" value="Rarely" />Rarely</label>
         </div>
+        <div class="nav-buttons">
+          <button class="back-button" data-prev>← Back</button>
+          <button class="button-primary" data-next disabled>Next →</button>
+        </div>
       </section>
 
       <section class="quiz-step" data-step="2" aria-live="polite">
@@ -524,6 +389,10 @@
           <label class="answer"><input type="radio" name="q2" value="Less than 6 months" />Less than 6 months</label>
           <label class="answer"><input type="radio" name="q2" value="1–2 years" />1–2 years</label>
           <label class="answer"><input type="radio" name="q2" value="3+ years" />3+ years</label>
+        </div>
+        <div class="nav-buttons">
+          <button class="back-button" data-prev>← Back</button>
+          <button class="button-primary" data-next disabled>Next →</button>
         </div>
       </section>
 
@@ -535,6 +404,10 @@
           <label class="answer"><input type="radio" name="q3" value="Yes, and they worked" />Yes, and they worked</label>
           <label class="answer"><input type="radio" name="q3" value="Not yet" />Not yet</label>
         </div>
+        <div class="nav-buttons">
+          <button class="back-button" data-prev>← Back</button>
+          <button class="button-primary" data-next disabled>Next →</button>
+        </div>
       </section>
 
       <section class="quiz-step" data-step="4" aria-live="polite">
@@ -544,6 +417,10 @@
           <label class="answer"><input type="radio" name="q4" value="Almost always" />Almost always</label>
           <label class="answer"><input type="radio" name="q4" value="Sometimes" />Sometimes</label>
           <label class="answer"><input type="radio" name="q4" value="Rarely" />Rarely</label>
+        </div>
+        <div class="nav-buttons">
+          <button class="back-button" data-prev>← Back</button>
+          <button class="button-primary" data-next disabled>Next →</button>
         </div>
       </section>
 
@@ -555,23 +432,20 @@
           <label class="answer"><input type="radio" name="q5" value="Maybe" />Maybe</label>
           <label class="answer"><input type="radio" name="q5" value="Not really" />Not really</label>
         </div>
+        <div class="nav-buttons">
+          <button class="back-button" data-prev>← Back</button>
+          <button class="button-primary" data-next disabled>See Results →</button>
+        </div>
       </section>
 
       <section class="quiz-step results" data-step="6" aria-live="polite">
         <div class="eyebrow">Great News</div>
         <h2>You Qualify to Watch the Video</h2>
         <p>Based on your answers, your digestion type matches those who benefited most from the Harvard-backed 8-second warm water protocol. This private video explains how a simple morning ritual can help clear buildup, ease bloating, and restore gut balance naturally.</p>
-        <a class="cta-image" href="https://your-vsl-link-here.com" aria-label="Continue to the Harvard-backed gut health video">
-          <img src="doctor.png" alt="Tap to continue to the Harvard-backed gut health video" loading="lazy" />
-        </a>
         <a class="button-primary" href="https://your-vsl-link-here.com">Continue to Video →</a>
 
         <div class="expert">
-          <img
-            src="doctor1.png"
-            alt="Dr. Anthony Scott"
-            loading="lazy"
-          />
+          <img src="https://yourdomain.com/assets/professor.png" alt="Dr. Anthony Scott" loading="lazy" />
           <div>
             <h3>Dr. Anthony Scott</h3>
             <p>Dr. Anthony Scott is a Harvard-trained medical researcher specializing in gut and liver health. His work on the gut-liver axis has helped thousands achieve smooth digestion through natural daily rituals.</p>
@@ -609,12 +483,20 @@
     }
 
     function showStep(index) {
-      const boundedIndex = Math.max(0, Math.min(index, steps.length - 1));
       steps[currentStep].classList.remove('active');
-      currentStep = boundedIndex;
+      currentStep = index;
       steps[currentStep].classList.add('active');
+      const nextButton = steps[currentStep].querySelector('[data-next]');
+      if (nextButton) {
+        const requiresAnswer = currentStep > 0 && currentStep <= totalQuestions;
+        if (requiresAnswer) {
+          const selected = steps[currentStep].querySelector('input[type="radio"]:checked');
+          nextButton.disabled = !selected;
+        } else {
+          nextButton.disabled = false;
+        }
+      }
       updateProgress();
-      steps[currentStep].scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     document.querySelectorAll('[data-next]').forEach(button => {
@@ -622,8 +504,26 @@
         const stepElement = button.closest('.quiz-step');
         const stepIndex = steps.indexOf(stepElement);
 
+        if (stepIndex >= 1 && stepIndex <= totalQuestions) {
+          const inputs = stepElement.querySelectorAll('input[type="radio"]');
+          const selected = Array.from(inputs).some(input => input.checked);
+          if (!selected) {
+            return;
+          }
+        }
+
         if (stepIndex < steps.length - 1) {
           showStep(stepIndex + 1);
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-prev]').forEach(button => {
+      button.addEventListener('click', () => {
+        const stepElement = button.closest('.quiz-step');
+        const stepIndex = steps.indexOf(stepElement);
+        if (stepIndex > 0) {
+          showStep(stepIndex - 1);
         }
       });
     });
@@ -637,13 +537,14 @@
             answer.classList.toggle('selected', answer.contains(target));
           });
           const stepElement = group.closest('.quiz-step');
-          const stepIndex = steps.indexOf(stepElement);
-          if (stepIndex !== -1) {
-            const nextIndex = Math.min(stepIndex + 1, steps.length - 1);
-            if (nextIndex !== stepIndex) {
+          const nextButton = stepElement.querySelector('[data-next]');
+          if (nextButton) {
+            nextButton.disabled = false;
+            const stepIndex = steps.indexOf(stepElement);
+            if (stepIndex !== -1 && stepIndex < steps.length - 1) {
               setTimeout(() => {
                 if (steps[currentStep] === stepElement) {
-                  showStep(nextIndex);
+                  showStep(stepIndex + 1);
                 }
               }, autoAdvanceDelay);
             }
@@ -655,4 +556,4 @@
     updateProgress();
   </script>
 </body>
-</html
+</html>
