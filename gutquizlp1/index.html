@@ -368,7 +368,7 @@
       </section>
 
       <section class="quiz-step" data-step="1" aria-live="polite">
-        <div class="question-number">Question 1 of 6</div>
+        <div class="question-number">Question 1 of 5</div>
         <h2 class="question-title">How often do you experience bloating, constipation, or irregular digestion?</h2>
         <div class="answers" role="radiogroup">
           <label class="answer"><input type="radio" name="q1" value="Daily" />Daily</label>
@@ -383,7 +383,7 @@
       </section>
 
       <section class="quiz-step" data-step="2" aria-live="polite">
-        <div class="question-number">Question 2 of 6</div>
+        <div class="question-number">Question 2 of 5</div>
         <h2 class="question-title">How long have you been dealing with digestive issues?</h2>
         <div class="answers" role="radiogroup">
           <label class="answer"><input type="radio" name="q2" value="Less than 6 months" />Less than 6 months</label>
@@ -397,7 +397,7 @@
       </section>
 
       <section class="quiz-step" data-step="3" aria-live="polite">
-        <div class="question-number">Question 3 of 6</div>
+        <div class="question-number">Question 3 of 5</div>
         <h2 class="question-title">Have you tried fiber, probiotics, or laxatives before?</h2>
         <div class="answers" role="radiogroup">
           <label class="answer"><input type="radio" name="q3" value="Yes, but they didn’t help" />Yes, but they didn’t help</label>
@@ -411,7 +411,7 @@
       </section>
 
       <section class="quiz-step" data-step="4" aria-live="polite">
-        <div class="question-number">Question 4 of 6</div>
+        <div class="question-number">Question 4 of 5</div>
         <h2 class="question-title">Do you often feel tired or sluggish after meals?</h2>
         <div class="answers" role="radiogroup">
           <label class="answer"><input type="radio" name="q4" value="Almost always" />Almost always</label>
@@ -425,26 +425,12 @@
       </section>
 
       <section class="quiz-step" data-step="5" aria-live="polite">
-        <div class="question-number">Question 5 of 6</div>
-        <h2 class="question-title">Do you believe your digestion has worsened with age?</h2>
-        <div class="answers" role="radiogroup">
-          <label class="answer"><input type="radio" name="q5" value="Yes" />Yes</label>
-          <label class="answer"><input type="radio" name="q5" value="Not sure" />Not sure</label>
-          <label class="answer"><input type="radio" name="q5" value="No" />No</label>
-        </div>
-        <div class="nav-buttons">
-          <button class="back-button" data-prev>← Back</button>
-          <button class="button-primary" data-next disabled>Next →</button>
-        </div>
-      </section>
-
-      <section class="quiz-step" data-step="6" aria-live="polite">
-        <div class="question-number">Question 6 of 6</div>
+        <div class="question-number">Question 5 of 5</div>
         <h2 class="question-title">Would you like to discover a simple home method proven to support smoother digestion?</h2>
         <div class="answers" role="radiogroup">
-          <label class="answer"><input type="radio" name="q6" value="Yes, absolutely" />Yes, absolutely</label>
-          <label class="answer"><input type="radio" name="q6" value="Maybe" />Maybe</label>
-          <label class="answer"><input type="radio" name="q6" value="Not really" />Not really</label>
+          <label class="answer"><input type="radio" name="q5" value="Yes, absolutely" />Yes, absolutely</label>
+          <label class="answer"><input type="radio" name="q5" value="Maybe" />Maybe</label>
+          <label class="answer"><input type="radio" name="q5" value="Not really" />Not really</label>
         </div>
         <div class="nav-buttons">
           <button class="back-button" data-prev>← Back</button>
@@ -452,7 +438,7 @@
         </div>
       </section>
 
-      <section class="quiz-step results" data-step="7" aria-live="polite">
+      <section class="quiz-step results" data-step="6" aria-live="polite">
         <div class="eyebrow">Great News</div>
         <h2>You Qualify to Watch the Video</h2>
         <p>Based on your answers, your digestion type matches those who benefited most from the Harvard-backed 8-second warm water protocol. This private video explains how a simple morning ritual can help clear buildup, ease bloating, and restore gut balance naturally.</p>
@@ -486,7 +472,8 @@
   <script>
     const steps = Array.from(document.querySelectorAll('.quiz-step'));
     const progressFill = document.getElementById('progressFill');
-    const totalQuestions = 6;
+    const totalQuestions = 5;
+    const autoAdvanceDelay = 320;
     let currentStep = 0;
 
     function updateProgress() {
@@ -549,9 +536,18 @@
           answers.forEach(answer => {
             answer.classList.toggle('selected', answer.contains(target));
           });
-          const nextButton = group.closest('.quiz-step').querySelector('[data-next]');
+          const stepElement = group.closest('.quiz-step');
+          const nextButton = stepElement.querySelector('[data-next]');
           if (nextButton) {
             nextButton.disabled = false;
+            const stepIndex = steps.indexOf(stepElement);
+            if (stepIndex !== -1 && stepIndex < steps.length - 1) {
+              setTimeout(() => {
+                if (steps[currentStep] === stepElement) {
+                  showStep(stepIndex + 1);
+                }
+              }, autoAdvanceDelay);
+            }
           }
         }
       });
