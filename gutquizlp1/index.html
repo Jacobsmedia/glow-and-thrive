@@ -1,150 +1,694 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Himalayan Pink Salt and Ice Hack</title>
-  
+<html lang="en">
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Himalayan Pink Salt and Ice Hack</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #fff;
-      color: #333;
-      line-height: 1.6;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActivatedYou - Gut Health Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-      background-color: #2a7f62;
-      padding: 1.5rem;
-      text-align: center;
-      color: white;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #edf4ed;
+            color: #22221f;
+            min-height: 100vh;
+            position: relative;
+        }
 
-    nav {
-      background: #1e5d48;
-      color: white;
-      padding: 0.8rem;
-      text-align: center;
-    }
+        .header {
+            background-color: #ffffff;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+        }
 
-    nav a {
-      color: white;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        .logo {
+            max-width: 165px;
+            height: auto;
+        }
 
-    .hero {
-      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&h=600&q=80');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 6rem 2rem;
-      text-align: center;
-    }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            min-height: calc(100vh - 150px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
+        .quiz-step {
+            display: none;
+            width: 100%;
+            animation: fadeIn 0.5s ease-in;
+        }
 
-    .section {
-      padding: 3rem 1.5rem;
-      max-width: 1000px;
-      margin: auto;
-    }
+        .quiz-step.active {
+            display: block;
+        }
 
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .feature {
-      flex: 1 1 250px;
-      border: 1px solid #eee;
-      padding: 1.5rem;
-      border-radius: 8px;
-      background: #fafafa;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      text-align: center;
-    }
+        h1, h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
 
-    .feature img {
-      width: 100%;
-      max-height: 150px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 1rem;
-    }
+        h3, h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
 
-    footer {
-      background-color: #f1f1f1;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #777;
-      margin-top: 4rem;
-    }
-  </style>
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .start-button, .answer-button {
+            background-color: #f6641f;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            max-width: 400px;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .start-button:hover, .answer-button:hover {
+            background-color: #dd5719;
+            transform: translateY(-2px);
+        }
+
+        .start-button:active, .answer-button:active {
+            transform: translateY(0);
+        }
+
+        .arrow {
+            width: 32px;
+            height: auto;
+        }
+
+        .skip-link {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-decoration: underline;
+            color: #22221f;
+            cursor: pointer;
+            font-weight: 300;
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .skip-link:hover {
+            opacity: 0.7;
+        }
+
+        .answers-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .answer-button {
+            background-color: white;
+            color: #22221f;
+            border: 2px solid #d0d0d0;
+            text-transform: none;
+            font-weight: 500;
+            padding: 1.25rem 1.5rem;
+            max-width: 100%;
+        }
+
+        .answer-button:hover {
+            background-color: #f6641f;
+            color: white;
+            border-color: #f6641f;
+        }
+
+        .progress-bar {
+            width: 100%;
+            max-width: 600px;
+            height: 8px;
+            background-color: #d0d0d0;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #f6641f;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .question-number {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .result {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .result h2 {
+            color: #f6641f;
+            margin-bottom: 1rem;
+        }
+
+        .result p {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        /* Results Page Styles */
+        .results-page {
+            background-color: #c5c5c5;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .speaker-notice {
+            background-color: #c5c5c5;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .results-container {
+            background-color: white;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .results-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+
+        .video-section {
+            position: relative;
+        }
+
+        .video-wrapper {
+            position: relative;
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .play-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-left: 25px solid #f6641f;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+        }
+
+        .click-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #e63946;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            font-weight: bold;
+            font-size: 1rem;
+            transform: rotate(-5deg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .profile-section {
+            padding-top: 1rem;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #22221f;
+        }
+
+        .profile-bio {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #22221f;
+            text-align: left;
+        }
+
+        .profile-bio strong {
+            text-decoration: underline;
+        }
+
+        .next-step-button {
+            background-color: #f6641f;
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .next-step-button:hover {
+            background-color: #dd5719;
+            transform: translateY(-2px);
+        }
+
+        .as-seen-on {
+            background-color: #7b9b7b;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .as-seen-on h3 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #22221f;
+        }
+
+        .womens-health {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+        }
+
+        .travel-leisure {
+            font-family: Arial, sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .forbes {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+        }
+
+        .disclaimer {
+            color: white;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer {
+            background-color: #3a3a3a;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: white;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .footer-disclaimer {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .results-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .results-container {
+                padding: 2rem 1rem;
+            }
+
+            .logos {
+                gap: 1.5rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-name {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1, h2 {
+                font-size: 2rem;
+            }
+
+            h3, h4 {
+                font-size: 1.25rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>VitalPoint</h1>
-    <p>Balance. Energy. Focus.</p>
-  </header>
+    <header class="header">
+        <img src="https://ext.same-assets.com/2021751194/213006716.png" alt="ActivatedYou Morning Complete" class="logo">
+    </header>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Insights</a>
-    <a href="#">Contact</a>
-  </nav>
+    <div class="container">
+        <!-- Step 0: Landing Page -->
+        <div class="quiz-step active" id="step-0">
+            <h2>What's Your Gut Telling You?</h2>
+            <h4>Take the free quiz to uncover your gut type!</h4>
+            <p>By taking this quiz, you'll learn which "gut category" best describes you — and how you can help resolve common gut-related health issues (like fatigue, weight gain, or indigestion).</p>
+            <button class="start-button" onclick="nextStep(1)">
+                Start Quiz
+                <img src="https://ext.same-assets.com/2021751194/1458334879.png" alt="arrow" class="arrow">
+            </button>
+        </div>
 
-  <div class="hero">
-    <h1>Elevate Your Everyday</h1>
-    <p>Explore tips and insights for a more balanced life.</p>
-  </div>
+        <!-- Step 1: Question 1 -->
+        <div class="quiz-step" id="step-1">
+            <div class="question-number">Question 1 of 6</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 17%"></div>
+            </div>
+            <h2>How often do you experience digestive discomfort?</h2>
+            <div class="answers-grid">
+                <button class="answer-button" onclick="recordAnswer(1, 'daily'); nextStep(2)">Daily or almost every day</button>
+                <button class="answer-button" onclick="recordAnswer(1, 'several'); nextStep(2)">Several times a week</button>
+                <button class="answer-button" onclick="recordAnswer(1, 'occasionally'); nextStep(2)">Occasionally</button>
+                <button class="answer-button" onclick="recordAnswer(1, 'rarely'); nextStep(2)">Rarely or never</button>
+            </div>
+        </div>
 
-  <div class="section">
-    <h2>Latest Articles</h2>
-    <div class="features">
-      <div class="feature">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&h=200&q=80" alt="Forest">
-        <h3>Finding Peace in Nature</h3>
-        <p>Reconnect with the outdoors to reset your mind and recharge your body.</p>
-      </div>
-      <div class="feature">
-        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&h=200&q=80" alt="Meditation">
-        <h3>Daily Mindfulness Tips</h3>
-        <p>Start with just 5 minutes a day to improve clarity and reduce stress.</p>
-      </div>
-      <div class="feature">
-        <img src="https://images.unsplash.com/photo-1608999434711-4c0c8b1840bb?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=400&h=200&q=80" alt="Healthy Living">
-        <h3>Small Habits, Big Impact</h3>
-        <p>Simple routines that quietly transform your energy and focus over time.</p>
-      </div>
+        <!-- Step 2: Question 2 -->
+        <div class="quiz-step" id="step-2">
+            <div class="question-number">Question 2 of 6</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 33%"></div>
+            </div>
+            <h2>Which of these symptoms do you experience most often?</h2>
+            <div class="answers-grid">
+                <button class="answer-button" onclick="recordAnswer(2, 'bloating'); nextStep(3)">Bloating and gas</button>
+                <button class="answer-button" onclick="recordAnswer(2, 'constipation'); nextStep(3)">Constipation</button>
+                <button class="answer-button" onclick="recordAnswer(2, 'diarrhea'); nextStep(3)">Diarrhea</button>
+                <button class="answer-button" onclick="recordAnswer(2, 'fatigue'); nextStep(3)">Fatigue and low energy</button>
+                <button class="answer-button" onclick="recordAnswer(2, 'weight'); nextStep(3)">Difficulty managing weight</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Question 3 -->
+        <div class="quiz-step" id="step-3">
+            <div class="question-number">Question 3 of 6</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 50%"></div>
+            </div>
+            <h2>How would you describe your stress levels?</h2>
+            <div class="answers-grid">
+                <button class="answer-button" onclick="recordAnswer(3, 'high'); nextStep(4)">High - I'm stressed most of the time</button>
+                <button class="answer-button" onclick="recordAnswer(3, 'moderate'); nextStep(4)">Moderate - Some stressful days</button>
+                <button class="answer-button" onclick="recordAnswer(3, 'low'); nextStep(4)">Low - I manage stress well</button>
+                <button class="answer-button" onclick="recordAnswer(3, 'minimal'); nextStep(4)">Minimal - Rarely stressed</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Question 4 -->
+        <div class="quiz-step" id="step-4">
+            <div class="question-number">Question 4 of 6</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 67%"></div>
+            </div>
+            <h2>How often do you eat processed or fast foods?</h2>
+            <div class="answers-grid">
+                <button class="answer-button" onclick="recordAnswer(4, 'daily'); nextStep(5)">Daily</button>
+                <button class="answer-button" onclick="recordAnswer(4, 'several'); nextStep(5)">Several times a week</button>
+                <button class="answer-button" onclick="recordAnswer(4, 'occasionally'); nextStep(5)">Occasionally</button>
+                <button class="answer-button" onclick="recordAnswer(4, 'rarely'); nextStep(5)">Rarely or never</button>
+            </div>
+        </div>
+
+        <!-- Step 5: Question 5 -->
+        <div class="quiz-step" id="step-5">
+            <div class="question-number">Question 5 of 6</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 83%"></div>
+            </div>
+            <h2>Do you currently take probiotics or digestive supplements?</h2>
+            <div class="answers-grid">
+                <button class="answer-button" onclick="recordAnswer(5, 'yes-regularly'); nextStep(6)">Yes, regularly</button>
+                <button class="answer-button" onclick="recordAnswer(5, 'yes-occasionally'); nextStep(6)">Yes, occasionally</button>
+                <button class="answer-button" onclick="recordAnswer(5, 'used-to'); nextStep(6)">I used to, but not anymore</button>
+                <button class="answer-button" onclick="recordAnswer(5, 'never'); nextStep(6)">No, never</button>
+            </div>
+        </div>
+
+        <!-- Step 6: Question 6 -->
+        <div class="quiz-step" id="step-6">
+            <div class="question-number">Question 6 of 6</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+            <h2>What's your primary health goal?</h2>
+            <div class="answers-grid">
+                <button class="answer-button" onclick="recordAnswer(6, 'digestion'); showResults()">Improve digestion</button>
+                <button class="answer-button" onclick="recordAnswer(6, 'energy'); showResults()">Increase energy levels</button>
+                <button class="answer-button" onclick="recordAnswer(6, 'weight'); showResults()">Manage weight better</button>
+                <button class="answer-button" onclick="recordAnswer(6, 'overall'); showResults()">Overall gut health</button>
+                <button class="answer-button" onclick="recordAnswer(6, 'immune'); showResults()">Strengthen immune system</button>
+            </div>
+        </div>
+
+        <button class="skip-link" id="skip-btn" onclick="skipStep()">Skip this step</button>
     </div>
-  </div>
 
-  <footer>
-    &copy; 2025 VitalPoint. All rights reserved.
-  </footer>
+    <!-- Results -->
+    <div class="quiz-step results-page" id="results" style="display: none;">
+        <div class="speaker-notice">
+            MAKE SURE YOUR SPEAKERS ARE ON | USE ARROW KEYS TO FF AND RW
+        </div>
+
+        <div class="results-container">
+            <div class="results-content">
+                <div class="video-section">
+                    <div class="video-wrapper">
+                        <div class="click-badge">
+                            CLICK TO VIEW<br>YOUR RESULTS
+                        </div>
+                        <img src="https://via.placeholder.com/600x400/8b7355/ffffff?text=Video+Player" alt="Video" class="video-placeholder">
+                        <button class="play-button" onclick="alert('Video would play here')"></button>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <img src="https://via.placeholder.com/150/cccccc/666666?text=Maggie+Q" alt="Maggie Q" class="profile-image">
+                    <h2 class="profile-name">Maggie Q</h2>
+                    <div class="profile-bio">
+                        As a health advocate, animal rights activist, and actor, best known for her roles in Nikita and in Designated Survivor, Maggie uses her name to advocate for those in need. Maggie's struggles with her own health led her to do <strong>extensive research in the world of nutrition.</strong> At this point, Maggie knows more about what to do to look and feel your best than most nutritionists or dietitians!
+                    </div>
+                </div>
+            </div>
+
+            <button class="next-step-button" onclick="alert('Next step would continue here')">NEXT STEP</button>
+        </div>
+
+        <div class="as-seen-on">
+            <h3>ACTIVATEDYOU AS SEEN ON:</h3>
+            <div class="logos">
+                <div class="logo-text womens-health">Women's Health</div>
+                <div class="logo-text travel-leisure">TRAVEL + LEISURE</div>
+                <div class="logo-text forbes">Forbes</div>
+            </div>
+            <div class="disclaimer">
+                Maggie Q and ActivatedYou™ are not endorsed by or affiliated with any of these organizations
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>©ActivatedYou 2017-2025. All Rights Reserved</div>
+            <div class="footer-disclaimer">
+                The information on this website has not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure or prevent any disease.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        let answers = {};
+
+        function nextStep(step) {
+            // Hide current step
+            document.getElementById('step-' + currentStep).classList.remove('active');
+
+            // Show next step
+            currentStep = step;
+            document.getElementById('step-' + step).classList.add('active');
+
+            // Hide skip button on landing and results
+            if (step === 0 || step === 'results') {
+                document.getElementById('skip-btn').style.display = 'none';
+            } else {
+                document.getElementById('skip-btn').style.display = 'block';
+            }
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function recordAnswer(questionNum, answer) {
+            answers[questionNum] = answer;
+        }
+
+        function skipStep() {
+            if (currentStep >= 1 && currentStep <= 5) {
+                nextStep(currentStep + 1);
+            } else if (currentStep === 6) {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('step-' + currentStep).classList.remove('active');
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('skip-btn').style.display = 'none';
+            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.header').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function restartQuiz() {
+            answers = {};
+            document.getElementById('results').style.display = 'none';
+            document.querySelector('.container').style.display = 'flex';
+            document.querySelector('.header').style.display = 'block';
+            document.getElementById('step-0').classList.add('active');
+            currentStep = 0;
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize skip button visibility
+        document.getElementById('skip-btn').style.display = 'none';
+    </script>
 </body>
 </html>
-<!-- partial -->
+    
+  </body>
   
-</body>
 </html>
