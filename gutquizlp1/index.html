@@ -1,694 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ActivatedYou - Gut Health Quiz</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gut Health Daily</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --brand-green: #3c9a6b;
+      --brand-dark: #21563b;
+      --brand-light: #f0f8f4;
+      --text-dark: #1f2a24;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #edf4ed;
-            color: #22221f;
-            min-height: 100vh;
-            position: relative;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        .header {
-            background-color: #ffffff;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid #e5e5e5;
-        }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #f7fff9 0%, #e6f3ec 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        .logo {
-            max-width: 165px;
-            height: auto;
-        }
+    header {
+      background: radial-gradient(circle at top, #4fb382, var(--brand-dark));
+      color: white;
+      padding: 3rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-            min-height: calc(100vh - 150px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.18), transparent 60%),
+                  radial-gradient(circle at 80% 10%, rgba(255,255,255,0.2), transparent 55%);
+      pointer-events: none;
+    }
 
-        .quiz-step {
-            display: none;
-            width: 100%;
-            animation: fadeIn 0.5s ease-in;
-        }
+    header h1 {
+      font-size: clamp(2.5rem, 5vw, 3.4rem);
+      margin: 0 0 0.5rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
 
-        .quiz-step.active {
-            display: block;
-        }
+    header p {
+      margin: 0;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 0 1rem 4rem;
+    }
 
-        h1, h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
+    .quiz-card {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(46, 103, 75, 0.18);
+      width: min(640px, 100%);
+      margin-top: -80px;
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      position: relative;
+      z-index: 1;
+    }
 
-        h3, h4 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
+    .progress-wrap {
+      margin-bottom: 1.5rem;
+    }
 
-        p {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: #4a5a51;
+      margin-bottom: 0.5rem;
+    }
 
-        .start-button, .answer-button {
-            background-color: #f6641f;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            width: 100%;
-            max-width: 400px;
-            justify-content: center;
-            margin: 0 auto;
-        }
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e4efe8;
+      border-radius: 999px;
+      overflow: hidden;
+    }
 
-        .start-button:hover, .answer-button:hover {
-            background-color: #dd5719;
-            transform: translateY(-2px);
-        }
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--brand-green), #74d2a3);
+      width: 0;
+      transition: width 350ms ease;
+    }
 
-        .start-button:active, .answer-button:active {
-            transform: translateY(0);
-        }
+    .question {
+      font-size: clamp(1.35rem, 3vw, 1.7rem);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
 
-        .arrow {
-            width: 32px;
-            height: auto;
-        }
+    .options {
+      display: grid;
+      gap: 1rem;
+    }
 
-        .skip-link {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            text-decoration: underline;
-            color: #22221f;
-            cursor: pointer;
-            font-weight: 300;
-            background: transparent;
-            border: none;
-            font-size: 1rem;
-        }
+    .option-btn {
+      background: var(--brand-light);
+      border: 2px solid transparent;
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, background-color 200ms ease;
+    }
 
-        .skip-link:hover {
-            opacity: 0.7;
-        }
+    .option-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(60, 154, 107, 0.18);
+      border-color: rgba(60, 154, 107, 0.4);
+    }
 
-        .answers-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-            width: 100%;
-        }
+    .option-btn.selected {
+      background: white;
+      border-color: var(--brand-green);
+      box-shadow: 0 18px 32px rgba(60, 154, 107, 0.25);
+    }
 
-        .answer-button {
-            background-color: white;
-            color: #22221f;
-            border: 2px solid #d0d0d0;
-            text-transform: none;
-            font-weight: 500;
-            padding: 1.25rem 1.5rem;
-            max-width: 100%;
-        }
+    .result {
+      text-align: center;
+      padding: 1rem 0 0.5rem;
+    }
 
-        .answer-button:hover {
-            background-color: #f6641f;
-            color: white;
-            border-color: #f6641f;
-        }
+    .result h2 {
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      margin-bottom: 0.75rem;
+      color: var(--brand-dark);
+    }
 
-        .progress-bar {
-            width: 100%;
-            max-width: 600px;
-            height: 8px;
-            background-color: #d0d0d0;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
+    .result p {
+      margin: 0 auto;
+      max-width: 32ch;
+      color: #4f5a53;
+      line-height: 1.5;
+    }
 
-        .progress-fill {
-            height: 100%;
-            background-color: #f6641f;
-            transition: width 0.3s ease;
-            border-radius: 10px;
-        }
+    .restart-btn {
+      margin-top: 2rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--brand-green);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: filter 200ms ease, transform 200ms ease;
+    }
 
-        .question-number {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
+    .restart-btn:hover {
+      filter: brightness(1.05);
+      transform: translateY(-2px);
+    }
 
-        .result {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    footer {
+      text-align: center;
+      padding: 2.5rem 1.5rem 3rem;
+      font-size: 0.9rem;
+      color: #54635b;
+    }
 
-        .result h2 {
-            color: #f6641f;
-            margin-bottom: 1rem;
-        }
+    @media (max-width: 600px) {
+      header {
+        padding: 2.75rem 1rem 4rem;
+      }
 
-        .result p {
-            text-align: left;
-            margin-bottom: 1rem;
-        }
-
-        /* Results Page Styles */
-        .results-page {
-            background-color: #c5c5c5;
-            min-height: 100vh;
-            padding: 0;
-            margin: 0;
-        }
-
-        .speaker-notice {
-            background-color: #c5c5c5;
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .results-container {
-            background-color: white;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .results-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-            margin-bottom: 2rem;
-        }
-
-        .video-section {
-            position: relative;
-        }
-
-        .video-wrapper {
-            position: relative;
-            background-color: #000;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .video-placeholder {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .play-button:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-            background-color: rgba(255, 255, 255, 1);
-        }
-
-        .play-button::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 55%;
-            transform: translate(-50%, -50%);
-            width: 0;
-            height: 0;
-            border-left: 25px solid #f6641f;
-            border-top: 15px solid transparent;
-            border-bottom: 15px solid transparent;
-        }
-
-        .click-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: #e63946;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            font-weight: bold;
-            font-size: 1rem;
-            transform: rotate(-5deg);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            z-index: 10;
-            text-align: center;
-            line-height: 1.3;
-        }
-
-        .profile-section {
-            padding-top: 1rem;
-        }
-
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 1.5rem;
-            object-fit: cover;
-        }
-
-        .profile-name {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #22221f;
-        }
-
-        .profile-bio {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #22221f;
-            text-align: left;
-        }
-
-        .profile-bio strong {
-            text-decoration: underline;
-        }
-
-        .next-step-button {
-            background-color: #f6641f;
-            color: white;
-            padding: 1rem 3rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            display: block;
-            margin: 2rem auto;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .next-step-button:hover {
-            background-color: #dd5719;
-            transform: translateY(-2px);
-        }
-
-        .as-seen-on {
-            background-color: #7b9b7b;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .as-seen-on h3 {
-            color: white;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-        }
-
-        .logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .logo-text {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #22221f;
-        }
-
-        .womens-health {
-            font-family: 'Times New Roman', serif;
-            font-style: italic;
-        }
-
-        .travel-leisure {
-            font-family: Arial, sans-serif;
-            letter-spacing: 2px;
-        }
-
-        .forbes {
-            font-family: 'Times New Roman', serif;
-            font-style: italic;
-        }
-
-        .disclaimer {
-            color: white;
-            font-size: 0.85rem;
-            margin-top: 1.5rem;
-        }
-
-        .footer {
-            background-color: #3a3a3a;
-            padding: 1.5rem 2rem;
-            text-align: center;
-            color: white;
-            font-size: 0.85rem;
-            line-height: 1.6;
-        }
-
-        .footer-disclaimer {
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            color: #ccc;
-        }
-
-        @media (max-width: 768px) {
-            .results-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .results-container {
-                padding: 2rem 1rem;
-            }
-
-            .logos {
-                gap: 1.5rem;
-            }
-
-            .logo-text {
-                font-size: 1.5rem;
-            }
-
-            .profile-image {
-                width: 120px;
-                height: 120px;
-            }
-
-            .profile-name {
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1, h2 {
-                font-size: 2rem;
-            }
-
-            h3, h4 {
-                font-size: 1.25rem;
-            }
-
-            .container {
-                padding: 1.5rem 1rem;
-            }
-        }
-    </style>
+      .quiz-card {
+        margin-top: -60px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <img src="https://ext.same-assets.com/2021751194/213006716.png" alt="ActivatedYou Morning Complete" class="logo">
-    </header>
+  <header>
+    <h1>Gut Health Daily</h1>
+    <p>Your daily guide to a calmer, happier gut.</p>
+  </header>
 
-    <div class="container">
-        <!-- Step 0: Landing Page -->
-        <div class="quiz-step active" id="step-0">
-            <h2>What's Your Gut Telling You?</h2>
-            <h4>Take the free quiz to uncover your gut type!</h4>
-            <p>By taking this quiz, you'll learn which "gut category" best describes you — and how you can help resolve common gut-related health issues (like fatigue, weight gain, or indigestion).</p>
-            <button class="start-button" onclick="nextStep(1)">
-                Start Quiz
-                <img src="https://ext.same-assets.com/2021751194/1458334879.png" alt="arrow" class="arrow">
-            </button>
+  <main>
+    <section class="quiz-card" aria-live="polite">
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span id="progress-text">Question 1 of 5</span>
+          <span id="score-text">Score: 0</span>
         </div>
-
-        <!-- Step 1: Question 1 -->
-        <div class="quiz-step" id="step-1">
-            <div class="question-number">Question 1 of 6</div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 17%"></div>
-            </div>
-            <h2>How often do you experience digestive discomfort?</h2>
-            <div class="answers-grid">
-                <button class="answer-button" onclick="recordAnswer(1, 'daily'); nextStep(2)">Daily or almost every day</button>
-                <button class="answer-button" onclick="recordAnswer(1, 'several'); nextStep(2)">Several times a week</button>
-                <button class="answer-button" onclick="recordAnswer(1, 'occasionally'); nextStep(2)">Occasionally</button>
-                <button class="answer-button" onclick="recordAnswer(1, 'rarely'); nextStep(2)">Rarely or never</button>
-            </div>
+        <div class="progress-bar" aria-hidden="true">
+          <span id="progress-fill"></span>
         </div>
+      </div>
 
-        <!-- Step 2: Question 2 -->
-        <div class="quiz-step" id="step-2">
-            <div class="question-number">Question 2 of 6</div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 33%"></div>
-            </div>
-            <h2>Which of these symptoms do you experience most often?</h2>
-            <div class="answers-grid">
-                <button class="answer-button" onclick="recordAnswer(2, 'bloating'); nextStep(3)">Bloating and gas</button>
-                <button class="answer-button" onclick="recordAnswer(2, 'constipation'); nextStep(3)">Constipation</button>
-                <button class="answer-button" onclick="recordAnswer(2, 'diarrhea'); nextStep(3)">Diarrhea</button>
-                <button class="answer-button" onclick="recordAnswer(2, 'fatigue'); nextStep(3)">Fatigue and low energy</button>
-                <button class="answer-button" onclick="recordAnswer(2, 'weight'); nextStep(3)">Difficulty managing weight</button>
-            </div>
-        </div>
+      <div id="question-block">
+        <div class="question" id="question-text">Loading question...</div>
+        <div class="options" id="options"></div>
+      </div>
 
-        <!-- Step 3: Question 3 -->
-        <div class="quiz-step" id="step-3">
-            <div class="question-number">Question 3 of 6</div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 50%"></div>
-            </div>
-            <h2>How would you describe your stress levels?</h2>
-            <div class="answers-grid">
-                <button class="answer-button" onclick="recordAnswer(3, 'high'); nextStep(4)">High - I'm stressed most of the time</button>
-                <button class="answer-button" onclick="recordAnswer(3, 'moderate'); nextStep(4)">Moderate - Some stressful days</button>
-                <button class="answer-button" onclick="recordAnswer(3, 'low'); nextStep(4)">Low - I manage stress well</button>
-                <button class="answer-button" onclick="recordAnswer(3, 'minimal'); nextStep(4)">Minimal - Rarely stressed</button>
-            </div>
-        </div>
+      <div class="result" id="result" hidden>
+        <h2 id="result-title"></h2>
+        <p id="result-message"></p>
+        <button class="restart-btn" id="restart">Retake quiz</button>
+      </div>
+    </section>
+  </main>
 
-        <!-- Step 4: Question 4 -->
-        <div class="quiz-step" id="step-4">
-            <div class="question-number">Question 4 of 6</div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 67%"></div>
-            </div>
-            <h2>How often do you eat processed or fast foods?</h2>
-            <div class="answers-grid">
-                <button class="answer-button" onclick="recordAnswer(4, 'daily'); nextStep(5)">Daily</button>
-                <button class="answer-button" onclick="recordAnswer(4, 'several'); nextStep(5)">Several times a week</button>
-                <button class="answer-button" onclick="recordAnswer(4, 'occasionally'); nextStep(5)">Occasionally</button>
-                <button class="answer-button" onclick="recordAnswer(4, 'rarely'); nextStep(5)">Rarely or never</button>
-            </div>
-        </div>
+  <footer>
+    &copy; <span id="year"></span> Gut Health Daily. All rights reserved.
+  </footer>
 
-        <!-- Step 5: Question 5 -->
-        <div class="quiz-step" id="step-5">
-            <div class="question-number">Question 5 of 6</div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 83%"></div>
-            </div>
-            <h2>Do you currently take probiotics or digestive supplements?</h2>
-            <div class="answers-grid">
-                <button class="answer-button" onclick="recordAnswer(5, 'yes-regularly'); nextStep(6)">Yes, regularly</button>
-                <button class="answer-button" onclick="recordAnswer(5, 'yes-occasionally'); nextStep(6)">Yes, occasionally</button>
-                <button class="answer-button" onclick="recordAnswer(5, 'used-to'); nextStep(6)">I used to, but not anymore</button>
-                <button class="answer-button" onclick="recordAnswer(5, 'never'); nextStep(6)">No, never</button>
-            </div>
-        </div>
+  <script>
+    const quiz = [
+      {
+        question: "How do you typically feel after your meals?",
+        options: [
+          { text: "Light and energized", value: 3 },
+          { text: "Mostly fine, with occasional discomfort", value: 2 },
+          { text: "Bloated or sluggish", value: 1 }
+        ]
+      },
+      {
+        question: "How often do you include fermented foods (like yogurt or kimchi) in your routine?",
+        options: [
+          { text: "Daily", value: 3 },
+          { text: "A few times a week", value: 2 },
+          { text: "Rarely or never", value: 1 }
+        ]
+      },
+      {
+        question: "Describe your fiber intake on an average day.",
+        options: [
+          { text: "Lots of veggies, fruits, and whole grains", value: 3 },
+          { text: "Some fiber, but not consistently", value: 2 },
+          { text: "Fiber is not something I think about", value: 1 }
+        ]
+      },
+      {
+        question: "How balanced does your stress feel lately?",
+        options: [
+          { text: "I manage stress really well", value: 3 },
+          { text: "It comes in waves", value: 2 },
+          { text: "Stress feels constant", value: 1 }
+        ]
+      },
+      {
+        question: "How much sleep do you typically get each night?",
+        options: [
+          { text: "7-8 hours of quality rest", value: 3 },
+          { text: "5-6 hours, could be better", value: 2 },
+          { text: "Less than 5 hours", value: 1 }
+        ]
+      }
+    ];
 
-        <!-- Step 6: Question 6 -->
-        <div class="quiz-step" id="step-6">
-            <div class="question-number">Question 6 of 6</div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 100%"></div>
-            </div>
-            <h2>What's your primary health goal?</h2>
-            <div class="answers-grid">
-                <button class="answer-button" onclick="recordAnswer(6, 'digestion'); showResults()">Improve digestion</button>
-                <button class="answer-button" onclick="recordAnswer(6, 'energy'); showResults()">Increase energy levels</button>
-                <button class="answer-button" onclick="recordAnswer(6, 'weight'); showResults()">Manage weight better</button>
-                <button class="answer-button" onclick="recordAnswer(6, 'overall'); showResults()">Overall gut health</button>
-                <button class="answer-button" onclick="recordAnswer(6, 'immune'); showResults()">Strengthen immune system</button>
-            </div>
-        </div>
+    const progressText = document.getElementById('progress-text');
+    const scoreText = document.getElementById('score-text');
+    const progressFill = document.getElementById('progress-fill');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options');
+    const resultSection = document.getElementById('result');
+    const resultTitle = document.getElementById('result-title');
+    const resultMessage = document.getElementById('result-message');
+    const questionBlock = document.getElementById('question-block');
+    const restartButton = document.getElementById('restart');
 
-        <button class="skip-link" id="skip-btn" onclick="skipStep()">Skip this step</button>
-    </div>
+    let current = 0;
+    let score = 0;
+    let transitionTimeout = null;
 
-    <!-- Results -->
-    <div class="quiz-step results-page" id="results" style="display: none;">
-        <div class="speaker-notice">
-            MAKE SURE YOUR SPEAKERS ARE ON | USE ARROW KEYS TO FF AND RW
-        </div>
+    const messages = [
+      {
+        threshold: 12,
+        title: "Gut Goals Achieved!",
+        message:
+          "Your gut-loving habits are on point. Keep nourishing with fiber, fermented foods, and stress-soothing rituals."
+      },
+      {
+        threshold: 8,
+        title: "Solid Gut Foundation",
+        message:
+          "You have a great base. A few small tweaks—like mindful meals or an extra serving of greens—could unlock even more balance."
+      },
+      {
+        threshold: 0,
+        title: "Time to Support Your Gut",
+        message:
+          "Let’s build a daily rhythm with restorative sleep, calmer meals, and plant-powered foods to bring your digestion back on track."
+      }
+    ];
 
-        <div class="results-container">
-            <div class="results-content">
-                <div class="video-section">
-                    <div class="video-wrapper">
-                        <div class="click-badge">
-                            CLICK TO VIEW<br>YOUR RESULTS
-                        </div>
-                        <img src="https://via.placeholder.com/600x400/8b7355/ffffff?text=Video+Player" alt="Video" class="video-placeholder">
-                        <button class="play-button" onclick="alert('Video would play here')"></button>
-                    </div>
-                </div>
+    function updateProgress() {
+      progressText.textContent = `Question ${current + 1} of ${quiz.length}`;
+      scoreText.textContent = `Score: ${score}`;
+      const percent = ((current) / quiz.length) * 100;
+      progressFill.style.width = `${percent}%`;
+    }
 
-                <div class="profile-section">
-                    <img src="https://via.placeholder.com/150/cccccc/666666?text=Maggie+Q" alt="Maggie Q" class="profile-image">
-                    <h2 class="profile-name">Maggie Q</h2>
-                    <div class="profile-bio">
-                        As a health advocate, animal rights activist, and actor, best known for her roles in Nikita and in Designated Survivor, Maggie uses her name to advocate for those in need. Maggie's struggles with her own health led her to do <strong>extensive research in the world of nutrition.</strong> At this point, Maggie knows more about what to do to look and feel your best than most nutritionists or dietitians!
-                    </div>
-                </div>
-            </div>
+    function renderQuestion() {
+      clearTimeout(transitionTimeout);
+      questionBlock.hidden = false;
+      resultSection.hidden = true;
+      const currentQuestion = quiz[current];
+      questionText.textContent = currentQuestion.question;
+      optionsContainer.innerHTML = '';
 
-            <button class="next-step-button" onclick="alert('Next step would continue here')">NEXT STEP</button>
-        </div>
+      currentQuestion.options.forEach(({ text, value }) => {
+        const button = document.createElement('button');
+        button.className = 'option-btn';
+        button.type = 'button';
+        button.textContent = text;
+        button.dataset.value = value;
+        button.addEventListener('click', () => handleAnswer(button));
+        optionsContainer.appendChild(button);
+      });
 
-        <div class="as-seen-on">
-            <h3>ACTIVATEDYOU AS SEEN ON:</h3>
-            <div class="logos">
-                <div class="logo-text womens-health">Women's Health</div>
-                <div class="logo-text travel-leisure">TRAVEL + LEISURE</div>
-                <div class="logo-text forbes">Forbes</div>
-            </div>
-            <div class="disclaimer">
-                Maggie Q and ActivatedYou™ are not endorsed by or affiliated with any of these organizations
-            </div>
-        </div>
+      updateProgress();
+    }
 
-        <div class="footer">
-            <div>©ActivatedYou 2017-2025. All Rights Reserved</div>
-            <div class="footer-disclaimer">
-                The information on this website has not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure or prevent any disease.
-            </div>
-        </div>
-    </div>
+    function handleAnswer(button) {
+      const value = Number(button.dataset.value);
+      score += value;
 
-    <script>
-        let currentStep = 0;
-        let answers = {};
+      // Prevent multiple selections
+      Array.from(optionsContainer.children).forEach(btn => {
+        btn.disabled = true;
+        btn.classList.toggle('selected', btn === button);
+      });
 
-        function nextStep(step) {
-            // Hide current step
-            document.getElementById('step-' + currentStep).classList.remove('active');
-
-            // Show next step
-            currentStep = step;
-            document.getElementById('step-' + step).classList.add('active');
-
-            // Hide skip button on landing and results
-            if (step === 0 || step === 'results') {
-                document.getElementById('skip-btn').style.display = 'none';
-            } else {
-                document.getElementById('skip-btn').style.display = 'block';
-            }
-
-            // Scroll to top
-            window.scrollTo(0, 0);
+      // Advance automatically after a brief moment for feedback
+      transitionTimeout = setTimeout(() => {
+        current += 1;
+        if (current >= quiz.length) {
+          showResult();
+        } else {
+          renderQuestion();
         }
+      }, 550);
+    }
 
-        function recordAnswer(questionNum, answer) {
-            answers[questionNum] = answer;
-        }
+    function showResult() {
+      clearTimeout(transitionTimeout);
+      const percent = (quiz.length / quiz.length) * 100;
+      progressFill.style.width = `${percent}%`;
+      progressText.textContent = 'Quiz complete';
+      scoreText.textContent = `Final Score: ${score}`;
 
-        function skipStep() {
-            if (currentStep >= 1 && currentStep <= 5) {
-                nextStep(currentStep + 1);
-            } else if (currentStep === 6) {
-                showResults();
-            }
-        }
+      const outcome = messages.find(msg => score >= msg.threshold);
+      resultTitle.textContent = outcome.title;
+      resultMessage.textContent = outcome.message;
 
-        function showResults() {
-            document.getElementById('step-' + currentStep).classList.remove('active');
-            document.getElementById('results').style.display = 'block';
-            document.getElementById('skip-btn').style.display = 'none';
-            document.querySelector('.container').style.display = 'none';
-            document.querySelector('.header').style.display = 'none';
-            window.scrollTo(0, 0);
-        }
+      questionBlock.hidden = true;
+      resultSection.hidden = false;
+    }
 
-        function restartQuiz() {
-            answers = {};
-            document.getElementById('results').style.display = 'none';
-            document.querySelector('.container').style.display = 'flex';
-            document.querySelector('.header').style.display = 'block';
-            document.getElementById('step-0').classList.add('active');
-            currentStep = 0;
-            window.scrollTo(0, 0);
-        }
+    function restartQuiz() {
+      score = 0;
+      current = 0;
+      renderQuestion();
+    }
 
-        // Initialize skip button visibility
-        document.getElementById('skip-btn').style.display = 'none';
-    </script>
+    restartButton.addEventListener('click', restartQuiz);
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    renderQuestion();
+  </script>
 </body>
-</html>
-    
-  </body>
-  
-</html>
+</html
