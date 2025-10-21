@@ -44,16 +44,38 @@
 
     header {
       display: flex;
-      align-items: center;
-      gap: 14px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
       margin-bottom: 32px;
       text-align: left;
     }
 
-    header img {
-      width: 160px;
-      max-width: 45vw;
+    header .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    header .logo svg {
+      width: clamp(72px, 16vw, 96px);
       height: auto;
+      flex-shrink: 0;
+    }
+
+    header .logo-text {
+      display: flex;
+      flex-direction: column;
+      font-size: clamp(18px, 4vw, 26px);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--text-dark);
+    }
+
+    header .logo-text span + span {
+      margin-top: 4px;
     }
 
     header .brand-meta {
@@ -63,6 +85,7 @@
       color: var(--text-mid);
       font-weight: 600;
     }
+
 
     .quiz-card {
       width: 100%;
@@ -375,6 +398,16 @@
         padding: 28px 18px 32px;
       }
 
+      header {
+        align-items: center;
+        text-align: center;
+      }
+
+      header .logo {
+        flex-direction: column;
+        text-align: center;
+      }
+
       .expert {
         grid-template-columns: 1fr;
         text-align: center;
@@ -409,7 +442,45 @@
 <body>
   <div class="page">
     <header>
-      <img src="https://yourdomain.com/assets/logo.png" alt="Health Science Daily logo" loading="lazy" />
+      <div class="logo" role="img" aria-label="Healthy Science Daily">
+        <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="dnaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#4cc9a3" />
+              <stop offset="100%" stop-color="#1f7f76" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M38 20c24 20 24 48 0 68s-24 48 0 68"
+            fill="none"
+            stroke="url(#dnaGradient)"
+            stroke-width="10"
+            stroke-linecap="round"
+          />
+          <path
+            d="M82 20c-24 20-24 48 0 68s24 48 0 68"
+            fill="none"
+            stroke="url(#dnaGradient)"
+            stroke-width="10"
+            stroke-linecap="round"
+          />
+          <path d="M44 52h32m-32 32h32m-32 32h32m-32 32h32" stroke="#1b5f5b" stroke-width="8" stroke-linecap="round" />
+          <path
+            d="M60 24c15-7 27-23 29-41-21 4-33 17-29 41z"
+            fill="url(#dnaGradient)"
+          />
+          <path
+            d="M60 24c-15-7-27-23-29-41 21 4 33 17 29 41z"
+            fill="url(#dnaGradient)"
+          />
+          <circle cx="60" cy="176" r="10" fill="#1f7f76" />
+        </svg>
+        <div class="logo-text" aria-hidden="true">
+          <span>Healthy</span>
+          <span>Science</span>
+          <span>Daily</span>
+        </div>
+      </div>
       <div class="brand-meta">Harvard-Backed Digestive Insights</div>
     </header>
 
