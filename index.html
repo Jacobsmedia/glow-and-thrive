@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glow and Thrive</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --accent-color: #ff6f91;
+      --background: #fff7fb;
+      --text-color: #333333;
+      --secondary-text: #666666;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: var(--background);
+      color: var(--text-color);
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(255, 111, 145, 0.85), rgba(255, 172, 170, 0.9)),
+        url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1600&q=80") center/cover;
+      color: white;
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin: 1rem auto 0;
+      max-width: 600px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: -3rem auto 3rem;
+      padding: 0 1.5rem 3rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 35px rgba(255, 111, 145, 0.15);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 2rem;
+    }
+
+    .card-content h2 {
+      margin-top: 0;
+      color: var(--accent-color);
+      font-size: 2rem;
+    }
+
+    .highlights {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .highlight {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 12px 25px rgba(255, 111, 145, 0.12);
+      padding: 1.75rem;
+    }
+
+    .highlight h3 {
+      margin-top: 0;
+      color: var(--accent-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--secondary-text);
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      header p {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Glow and Thrive</h1>
+    <p>
+      Your sanctuary for embracing a radiant lifestyle. Discover nourishing rituals, holistic wellness tips, and beauty
+      inspiration designed to help you glow from the inside out.
+    </p>
+  </header>
+
+  <main>
+    <section class="card">
+      <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" alt="Woman enjoying a moment of self-care" />
+      <div class="card-content">
+        <h2>Where Health Meets Beauty</h2>
+        <p>
+          Glow and Thrive is a celebration of wellness, self-love, and modern beauty. We believe that feeling your best
+          starts with nurturing your body, mind, and skin with intention. From mindful routines to skincare secrets, our
+          curated insights guide you toward a luminous lifestyle tailored for you.
+        </p>
+        <p>
+          Join a community that champions balance, positivity, and the transformative power of daily habits.
+        </p>
+      </div>
+    </section>
+
+    <section class="highlights">
+      <article class="highlight">
+        <h3>Wellness Rituals</h3>
+        <p>
+          Explore breathing exercises, nourishing recipes, and rejuvenating practices crafted to boost your energy and
+          focus.
+        </p>
+      </article>
+      <article class="highlight">
+        <h3>Beauty Essentials</h3>
+        <p>
+          Discover skincare routines, ingredient spotlights, and expert tips to keep your glow effortless and timeless.
+        </p>
+      </article>
+      <article class="highlight">
+        <h3>Mindful Moments</h3>
+        <p>
+          Embrace mindfulness through journaling prompts, gratitude practices, and reflections that cultivate inner
+          harmony.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Glow and Thrive. Feel vibrant. Stay inspired.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
