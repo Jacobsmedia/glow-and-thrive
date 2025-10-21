@@ -1,152 +1,391 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Health News Daily</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Crect%20fill%3D%27%25230a6ebd%27%20width%3D%27100%27%20height%3D%27100%27/%3E%3Ctext%20x%3D%2750%27%20y%3D%2765%27%20font-size%3D%2760%27%20text-anchor%3D%27middle%27%20fill%3D%27white%27%20font-family%3D%27Arial%2C%20sans-serif%27%3EHN%3C/text%3E%3C/svg%3E" />
-
-  
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Health News Daily</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gut Health Daily</title>
   <style>
+    :root {
+      color-scheme: light;
+      --brand-green: #3c9a6b;
+      --brand-dark: #21563b;
+      --brand-light: #f0f8f4;
+      --text-dark: #1f2a24;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #fff;
-      color: #333;
-      line-height: 1.6;
+      font-family: "Inter", "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #f7fff9 0%, #e6f3ec 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
-      background-color: #2a7f62;
-      padding: 1.5rem;
+      background: radial-gradient(circle at top, #4fb382, var(--brand-dark));
+      color: white;
+      padding: 3rem 1.5rem 4rem;
       text-align: center;
-      color: white;
+      position: relative;
+      overflow: hidden;
     }
 
-    nav {
-      background: #1e5d48;
-      color: white;
-      padding: 0.8rem;
-      text-align: center;
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.18), transparent 60%),
+                  radial-gradient(circle at 80% 10%, rgba(255,255,255,0.2), transparent 55%);
+      pointer-events: none;
     }
 
-    nav a {
-      color: white;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
+    header h1 {
+      font-size: clamp(2.5rem, 5vw, 3.4rem);
+      margin: 0 0 0.5rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
-    .hero {
-      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&h=600&q=80');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 6rem 2rem;
-      text-align: center;
+    header p {
+      margin: 0;
+      font-size: 1.1rem;
+      opacity: 0.9;
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .section {
-      padding: 3rem 1.5rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .features {
+    main {
+      flex: 1;
       display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
       justify-content: center;
-      margin-top: 2rem;
+      padding: 0 1rem 4rem;
     }
 
-    .feature {
-      flex: 1 1 250px;
-      border: 1px solid #eee;
-      padding: 1.5rem;
-      border-radius: 8px;
-      background: #fafafa;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      text-align: center;
+    .quiz-card {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(46, 103, 75, 0.18);
+      width: min(640px, 100%);
+      margin-top: -80px;
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      position: relative;
+      z-index: 1;
     }
 
-    .feature img {
+    .progress-wrap {
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: #4a5a51;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-bar {
       width: 100%;
-      max-height: 150px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 1rem;
+      height: 8px;
+      background: #e4efe8;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--brand-green), #74d2a3);
+      width: 0;
+      transition: width 350ms ease;
+    }
+
+    .question {
+      font-size: clamp(1.35rem, 3vw, 1.7rem);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .options {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .option-btn {
+      background: var(--brand-light);
+      border: 2px solid transparent;
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, background-color 200ms ease;
+    }
+
+    .option-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(60, 154, 107, 0.18);
+      border-color: rgba(60, 154, 107, 0.4);
+    }
+
+    .option-btn.selected {
+      background: white;
+      border-color: var(--brand-green);
+      box-shadow: 0 18px 32px rgba(60, 154, 107, 0.25);
+    }
+
+    .result {
+      text-align: center;
+      padding: 1rem 0 0.5rem;
+    }
+
+    .result h2 {
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      margin-bottom: 0.75rem;
+      color: var(--brand-dark);
+    }
+
+    .result p {
+      margin: 0 auto;
+      max-width: 32ch;
+      color: #4f5a53;
+      line-height: 1.5;
+    }
+
+    .restart-btn {
+      margin-top: 2rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--brand-green);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: filter 200ms ease, transform 200ms ease;
+    }
+
+    .restart-btn:hover {
+      filter: brightness(1.05);
+      transform: translateY(-2px);
     }
 
     footer {
-      background-color: #f1f1f1;
       text-align: center;
-      padding: 1rem;
+      padding: 2.5rem 1.5rem 3rem;
       font-size: 0.9rem;
-      color: #777;
-      margin-top: 4rem;
+      color: #54635b;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 2.75rem 1rem 4rem;
+      }
+
+      .quiz-card {
+        margin-top: -60px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>VitalPoint</h1>
-    <p>Balance. Energy. Focus.</p>
+    <h1>Gut Health Daily</h1>
+    <p>Your daily guide to a calmer, happier gut.</p>
   </header>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Insights</a>
-    <a href="#">Contact</a>
-  </nav>
+  <main>
+    <section class="quiz-card" aria-live="polite">
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span id="progress-text">Question 1 of 5</span>
+          <span id="score-text">Score: 0</span>
+        </div>
+        <div class="progress-bar" aria-hidden="true">
+          <span id="progress-fill"></span>
+        </div>
+      </div>
 
-  <div class="hero">
-    <h1>Elevate Your Everyday</h1>
-    <p>Explore tips and insights for a more balanced life.</p>
-  </div>
+      <div id="question-block">
+        <div class="question" id="question-text">Loading question...</div>
+        <div class="options" id="options"></div>
+      </div>
 
-  <div class="section">
-    <h2>Latest Articles</h2>
-    <div class="features">
-      <div class="feature">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&h=200&q=80" alt="Forest">
-        <h3>Finding Peace in Nature</h3>
-        <p>Reconnect with the outdoors to reset your mind and recharge your body.</p>
+      <div class="result" id="result" hidden>
+        <h2 id="result-title"></h2>
+        <p id="result-message"></p>
+        <button class="restart-btn" id="restart">Retake quiz</button>
       </div>
-      <div class="feature">
-        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&h=200&q=80" alt="Meditation">
-        <h3>Daily Mindfulness Tips</h3>
-        <p>Start with just 5 minutes a day to improve clarity and reduce stress.</p>
-      </div>
-      <div class="feature">
-        <img src="https://images.unsplash.com/photo-1608999434711-4c0c8b1840bb?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=400&h=200&q=80" alt="Healthy Living">
-        <h3>Small Habits, Big Impact</h3>
-        <p>Simple routines that quietly transform your energy and focus over time.</p>
-      </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 VitalPoint. All rights reserved.
+    &copy; <span id="year"></span> Gut Health Daily. All rights reserved.
   </footer>
-</body>
-</html>
-<!-- partial -->
-  
+
+  <script>
+    const quiz = [
+      {
+        question: "How do you typically feel after your meals?",
+        options: [
+          { text: "Light and energized", value: 3 },
+          { text: "Mostly fine, with occasional discomfort", value: 2 },
+          { text: "Bloated or sluggish", value: 1 }
+        ]
+      },
+      {
+        question: "How often do you include fermented foods (like yogurt or kimchi) in your routine?",
+        options: [
+          { text: "Daily", value: 3 },
+          { text: "A few times a week", value: 2 },
+          { text: "Rarely or never", value: 1 }
+        ]
+      },
+      {
+        question: "Describe your fiber intake on an average day.",
+        options: [
+          { text: "Lots of veggies, fruits, and whole grains", value: 3 },
+          { text: "Some fiber, but not consistently", value: 2 },
+          { text: "Fiber is not something I think about", value: 1 }
+        ]
+      },
+      {
+        question: "How balanced does your stress feel lately?",
+        options: [
+          { text: "I manage stress really well", value: 3 },
+          { text: "It comes in waves", value: 2 },
+          { text: "Stress feels constant", value: 1 }
+        ]
+      },
+      {
+        question: "How much sleep do you typically get each night?",
+        options: [
+          { text: "7-8 hours of quality rest", value: 3 },
+          { text: "5-6 hours, could be better", value: 2 },
+          { text: "Less than 5 hours", value: 1 }
+        ]
+      }
+    ];
+
+    const progressText = document.getElementById('progress-text');
+    const scoreText = document.getElementById('score-text');
+    const progressFill = document.getElementById('progress-fill');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options');
+    const resultSection = document.getElementById('result');
+    const resultTitle = document.getElementById('result-title');
+    const resultMessage = document.getElementById('result-message');
+    const questionBlock = document.getElementById('question-block');
+    const restartButton = document.getElementById('restart');
+
+    let current = 0;
+    let score = 0;
+    let transitionTimeout = null;
+
+    const messages = [
+      {
+        threshold: 12,
+        title: "Gut Goals Achieved!",
+        message:
+          "Your gut-loving habits are on point. Keep nourishing with fiber, fermented foods, and stress-soothing rituals."
+      },
+      {
+        threshold: 8,
+        title: "Solid Gut Foundation",
+        message:
+          "You have a great base. A few small tweaks—like mindful meals or an extra serving of greens—could unlock even more balance."
+      },
+      {
+        threshold: 0,
+        title: "Time to Support Your Gut",
+        message:
+          "Let’s build a daily rhythm with restorative sleep, calmer meals, and plant-powered foods to bring your digestion back on track."
+      }
+    ];
+
+    function updateProgress() {
+      progressText.textContent = `Question ${current + 1} of ${quiz.length}`;
+      scoreText.textContent = `Score: ${score}`;
+      const percent = ((current) / quiz.length) * 100;
+      progressFill.style.width = `${percent}%`;
+    }
+
+    function renderQuestion() {
+      clearTimeout(transitionTimeout);
+      questionBlock.hidden = false;
+      resultSection.hidden = true;
+      const currentQuestion = quiz[current];
+      questionText.textContent = currentQuestion.question;
+      optionsContainer.innerHTML = '';
+
+      currentQuestion.options.forEach(({ text, value }) => {
+        const button = document.createElement('button');
+        button.className = 'option-btn';
+        button.type = 'button';
+        button.textContent = text;
+        button.dataset.value = value;
+        button.addEventListener('click', () => handleAnswer(button));
+        optionsContainer.appendChild(button);
+      });
+
+      updateProgress();
+    }
+
+    function handleAnswer(button) {
+      const value = Number(button.dataset.value);
+      score += value;
+
+      // Prevent multiple selections
+      Array.from(optionsContainer.children).forEach(btn => {
+        btn.disabled = true;
+        btn.classList.toggle('selected', btn === button);
+      });
+
+      // Advance automatically after a brief moment for feedback
+      transitionTimeout = setTimeout(() => {
+        current += 1;
+        if (current >= quiz.length) {
+          showResult();
+        } else {
+          renderQuestion();
+        }
+      }, 550);
+    }
+
+    function showResult() {
+      clearTimeout(transitionTimeout);
+      const percent = (quiz.length / quiz.length) * 100;
+      progressFill.style.width = `${percent}%`;
+      progressText.textContent = 'Quiz complete';
+      scoreText.textContent = `Final Score: ${score}`;
+
+      const outcome = messages.find(msg => score >= msg.threshold);
+      resultTitle.textContent = outcome.title;
+      resultMessage.textContent = outcome.message;
+
+      questionBlock.hidden = true;
+      resultSection.hidden = false;
+    }
+
+    function restartQuiz() {
+      score = 0;
+      current = 0;
+      renderQuestion();
+    }
+
+    restartButton.addEventListener('click', restartQuiz);
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    renderQuestion();
+  </script>
 </body>
 </html>
